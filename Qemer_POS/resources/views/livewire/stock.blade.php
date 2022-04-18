@@ -31,6 +31,8 @@
         </center>
        
         </form>
+        {{-- @empty --}}
+        {{-- <p class="mx-auto fs-6 ">No records found</p> --}}
   </div>
   @endforeach 
   <div class="container " style="margin-top:5rem">
