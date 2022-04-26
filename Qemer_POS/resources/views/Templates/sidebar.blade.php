@@ -75,7 +75,7 @@
             </div>
             <form action="{{route('logout')}}" method="post">
               @csrf
-            <button><i class="bi bi-box-arrow-right text-light" id="log_out" aria-hidden="true"></i></button>
+            <button><i class="bi bi-box-arrow-right text-light fs-2" id="log_out" aria-hidden="true"></i></button>
             </form>
         </div>
     </div>

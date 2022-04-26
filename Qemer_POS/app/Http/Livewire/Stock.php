@@ -43,7 +43,7 @@ class Stock extends Component
         $searchTerm = '%'.$this->searchTerm.'%';
 
         $stocks = Stocks::where('stocks.name','like', $searchTerm)
-                                ->join('categories', 'stocks.category_id', '=', 'categories.id')
+                                ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
                                 ->orWhere('categories.category_name', 'like', $searchTerm)           
                                 ->paginate(8);
 

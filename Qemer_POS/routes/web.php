@@ -27,15 +27,14 @@ Route::get('/home', [App\Http\Controllers\StockController::class, 'index'])->nam
 
 // Route for stock items
 Route::controller(StockController::class)->group( function (){
-    Route::get('/itemForm','displayForm');
-    Route::get('stockItems','index');
+
     Route::get('singleItem/{id}','show');
     Route::post('storeItem','store');
     Route::put('updateItem/{id}','update');
     Route::delete('singleItem','destroy');
     Route::get('sortList/{id}','sortItems');
     Route::get('searchItem','searchItems');
-    Route::post('addCategories','storeCategories');
+    // Route::post('addCategories','storeCategories');
 });
 
 Route::controller(CartController::class)->group(function(){
@@ -53,4 +52,9 @@ Route::controller(ReceiptController::class)->group( function (){
     Route::get('receipt/{id}','show');
     
     
+});
+
+Route::controller(CategoryController::class)->group( function (){
+    Route::post('addCategories', 'store');
+    Route::get('/itemForm','displayForm');
 });

@@ -68,26 +68,6 @@ class stockController extends Controller
                 return redirect()->back()->with('error','Sorry, there is no category with this name');
 
     }
-    public function storeCategories(Request $request){
-        
-        $request->validate(
-            [
-                'name' => 'required','unique'
-            ]
-        );
-        
-        $newCategory=new Category;
-        $newCategory->category_name=$request->name;
-        $newCategory->save();
-        return redirect()->back()->with('success', 'Category added successfully!!');
-    }
-    public function displayForm(){
-        $categories= Category::all();
-
-        return view('Templates.createItems',[
-            'categories' => $categories
-        ]);
-    }
 
     /**
      * Show the form for creating a new resource.

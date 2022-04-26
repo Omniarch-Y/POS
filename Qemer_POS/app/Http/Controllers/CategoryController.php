@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -34,7 +35,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'name' => 'required','unique'
+            ]
+        );
+        
+        $newCategory=new Category;
+        $newCategory->category_name=$request->name;
+        $newCategory->save();
+        return redirect()->back()->with('success', 'Category added successfully!!');
+    }
+
+    public function displayForm(){
+        $categories= Category::all();
+
+        return view('Templates.createItems',[
+            'categories' => $categories
+        ]);
     }
 
     /**
