@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\StockController::class, 'index'])->name('home');
+Route::get('/home', [StockController::class, 'index'])->name('home');
 
 // Route for stock items
 Route::controller(StockController::class)->group( function (){
@@ -31,10 +31,10 @@ Route::controller(StockController::class)->group( function (){
     Route::get('singleItem/{id}','show');
     Route::post('storeItem','store');
     Route::put('updateItem/{id}','update');
-    Route::delete('singleItem','destroy');
+    Route::delete('deleteStock/{id}','destroy');
     Route::get('sortList/{id}','sortItems');
-    Route::get('searchItem','searchItems');
-    // Route::post('addCategories','storeCategories');
+    Route::get('collection','display');
+    Route::get('editView','editView');
 });
 
 Route::controller(CartController::class)->group(function(){

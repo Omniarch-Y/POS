@@ -165,7 +165,8 @@ class CartController extends Controller
     }
     public function listReport(){
 
-        $cartItems = Cart::where('status',1)->with('item')->orderBy('created_at','DESC')->paginate(5);
+        $soldItems = Cart::where('status',1)->with('item')->orderBy('created_at','DESC')->paginate(5);
+        $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cash= Cart::where('status',1)->where('created_at',now()->format('Y-m-d'))->sum('total_price');
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cartTotal=$myCart->count();
@@ -174,6 +175,7 @@ class CartController extends Controller
         $Total= number_format($cash);       
             return view('dailyReport',[
                  
+                'soldItems'=>$soldItems,
                 'informations'=>$cartItems,
                 'cash' => $Total,
                 'cartTotal'=>$cartTotal,

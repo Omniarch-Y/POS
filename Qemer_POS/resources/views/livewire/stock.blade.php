@@ -22,7 +22,7 @@
                <tbody>
 
                      @foreach($stocks as $stock)
-                                       <tr>
+                     <tr>
                      <form action="{{ url('storeCart') }}" method="POST">
                         @csrf
                      <th scope="row">{{$stock->id}}</th>
@@ -41,10 +41,10 @@
                         <input type="hidden" id ="stock_id" name="stock_id" value='{{$stock->id}}'>
                     </td>
                     <td>
-                       <button type="submit" class="btn btn-primary mx-auto my-2 ">Add to cart</button>
+                       <button type="submit" class="btn btn-primary mx-auto my-1 ">Add to cart</button>
                     </td>
-                  </form>
-                                    </tr>
+                    </form>
+                    </tr>
                     @endforeach
 
 

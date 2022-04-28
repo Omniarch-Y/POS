@@ -203,7 +203,7 @@ body{
         color: #fff;
     }
 
-    .sidebar ul li .bi-search{
+    /* .sidebar ul li .bi-search{
         position: absolute;
         z-index: 99;
         color: #fff;
@@ -214,7 +214,7 @@ body{
     .sidebar ul li .bi-search:hover{
         background: #fff;
         color: #0566bd
-    } 
+    }  */
 
     .sidebar .profile_content{
         position: absolute;
@@ -440,7 +440,7 @@ body{
         color: #fff;
     }
     
-    .sidebar ul li .bi-search{
+    /* .sidebar ul li .bi-search{
         position: absolute;
         z-index: 99;
         color: #fff;
@@ -451,7 +451,7 @@ body{
     .sidebar ul li .bi-search:hover{
         background: #fff;
         color: #0566bd;
-    } 
+    }  */
     
     .sidebar .profile_content{
         position: absolute;
@@ -529,4 +529,14 @@ body{
         margin: 12px;
     }
 
-  } 
+  }
+  
+.warning{
+      color: #fff;
+      background-color: #e1ad11;
+      border-color: #e1ad11;
+  }
+
+.warning:hover{
+      color: #fff;
+    }

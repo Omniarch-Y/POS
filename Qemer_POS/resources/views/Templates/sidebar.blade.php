@@ -8,13 +8,6 @@
         <i class="bi bi-list fs-1" aria-hidden="true" id="btn"></i>
     </div>
     <ul class="nav_list">
-        <li>
-            <a href="#">
-                <i class="bi bi-search" aria-hidden="true"></i>
-                <input type="text" class="form" placeholder="Search..."/>
-            </a>
-            <span class="tooltip">Search</span>
-        </li>
 
         <li>
             <a href="{{route('home')}}">
@@ -58,9 +51,17 @@
         <li>
             <a href="/receiptList">
                 <i   class="bi bi-printer-fill fs-5" aria-hidden="true" ></i>
-                <span class="links_name">Manage items</span>
+                <span class="links_name">Recipt list</span>
             </a>
-            <span class="tooltip">Manage items</span>
+            <span class="tooltip">Recipt list</span>
+        </li>
+
+        <li>
+            <a href="/collection">
+                <i class="bi bi-box fs-5" aria-hidden="true" ></i>
+                <span class="links_name">Stock</span>
+            </a>
+            <span class="tooltip">Stock</span>
         </li>
     </ul>
 
@@ -75,7 +76,7 @@
             </div>
             <form action="{{route('logout')}}" method="post">
               @csrf
-            <button><i class="bi bi-box-arrow-right text-light fs-2" id="log_out" aria-hidden="true"></i></button>
+            <button><i class="bi bi-box-arrow-right text-light fs-3" id="log_out" aria-hidden="true"></i></button>
             </form>
         </div>
     </div>

@@ -35,15 +35,15 @@
                      </tr>
                   </thead>
                   <tbody>
-                     @foreach ($informations as $info )
+                     @foreach ($soldItems as $soldItem )
                      <tr>
                       
-                        <td scope="row">{{ $info->item->name }}</td>
-                        <td>{{ $info->amount }}</td>
-                        <td>{{$info->total_price }}</td>
-                        <td>{{$info->rno }}</td>
+                        <td scope="row">{{ $soldItem->item->name }}</td>
+                        <td>{{ $soldItem->amount }}</td>
+                        <td>{{$soldItem->total_price }}</td>
+                        <td>{{$soldItem->rno }}</td>
                         <td>Sold</td>
-                        <td>{{$info->created_at->format('d-m-Y') }}</td>
+                        <td>{{$soldItem->created_at->format('d-m-Y') }}</td>
                      </tr>
                     
                      @endforeach
@@ -51,10 +51,10 @@
                   </tbody>
                </table>
                <div class="container " style="margin-top:5rem">
-                <div class="d-flex justify-content-center align-items-center ">
-                    <h4 >{{ $informations->links() }}</h4>
-            </div>
-            </div>
+                  <div class="d-flex justify-content-center align-items-center ">
+                      <h4 >{{ $soldItems->links() }}</h4>
+              </div>
+              </div>
              
                <div class="container " style="margin-top:5rem">
                 <div class="d-flex justify-content-center align-items-center ">

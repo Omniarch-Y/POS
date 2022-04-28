@@ -6,7 +6,7 @@
        <div class="container my-5 col-md-8">
    @if ($message = Session::get('error'))
             <div class="alert alert-danger">
-                <h1>{{ $message }}</h1>
+                <h6>{{ $message }}</h6>
             </div>
            @endif    
             </strong>
@@ -19,14 +19,14 @@
          <form action= "{{ url('anyReceipt')}}"  method="GET" class="d-flex">
             @csrf
             
-            <input class="form-control me-2 fs-3" name="date" type="date">
-            <button class="btn bi bi-search fs-3 text-white" type="submit" style="background-color:rgb(0, 84, 137) "></button>
+            <input class="form-control me-2 fs-5" name="date" type="date">
+            <button class="btn bi bi-search fs-5 text-white" type="submit" style="background-color:rgb(0, 84, 137) "></button>
           </form>
      </div>
      {{-- end of search-bar --}}
      <div class="container " style="margin-top:5rem">
       <div class="thead-inverse|thead-default d-flex justify-content-center align-items-center ">
-          <h1 >Receipt number</h1>
+          <h2 >Receipt number</h2>
   </div>
   </div>
      
@@ -35,7 +35,7 @@
                               
                               @foreach ($receiptNo as $info )
                               <div class="col-md-3">
-                              <td class="text-center mt-3 "><a href="{{'receipt/' . $info->receipt_number }}"> <h2>{!! $info->receipt_number  !!}</h2>  </a></td>
+                              <td class="text-center mt-3 "><a class="btn btn-success" href="{{'receipt/' . $info->receipt_number }}"> <h4>{!! $info->receipt_number  !!}</h4>  </a></td>
                               </div>
                               @endforeach
                              
