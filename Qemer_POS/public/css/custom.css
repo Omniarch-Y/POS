@@ -540,3 +540,14 @@ body{
 .warning:hover{
       color: #fff;
     }
+.icon-green{
+    color: green;
+}
+
+.icon-red{
+    color: red;
+}
+
+.icon-blue{
+    color: blue;
+}

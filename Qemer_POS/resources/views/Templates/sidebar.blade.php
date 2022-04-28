@@ -51,9 +51,9 @@
         <li>
             <a href="/receiptList">
                 <i   class="bi bi-receipt fs-5" aria-hidden="true" ></i>
-                <span class="links_name">Recipt list</span>
+                <span class="links_name">Receipt list</span>
             </a>
-            <span class="tooltip">Recipt list</span>
+            <span class="tooltip">Receipt list</span>
         </li>
 
         <li>

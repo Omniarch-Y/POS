@@ -41,7 +41,7 @@
                         <input type="hidden" id ="stock_id" name="stock_id" value='{{$stock->id}}'>
                     </td>
                     <td>
-                       <button type="submit" class="btn btn-primary mx-auto my-1 ">Add to cart</button>
+                       <button type="submit" class="btn btn-primary mx-auto my-1"><i class="bi bi-cart-plus-fill fs-5" aria-hidden="true" ></i></button>
                     </td>
                     </form>
                     </tr>
