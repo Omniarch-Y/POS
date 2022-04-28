@@ -20,7 +20,7 @@ $table->foreign('casher_id')->references('id')->on('users')->onDelete('NO ACTION
 $table->unsignedBigInteger('stock_id');
 $table->bigInteger('rno')->nullable();
 $table->bigInteger('tno')->nullable();
-$table->foreign('stock_id')->references('id')->on('stocks')->onDelete('CASCADE')->onUpdate('CASCADE');
+$table->foreign('stock_id')->references('id')->on('stocks')->onDelete('Restrict')->onUpdate('CASCADE');
 $table->foreign('rno')->references('receipt_number')->on('receipts')->onDelete('CASCADE')->onUpdate('CASCADE');
 $table->foreign('tno')->references('tin_number')->on('receipts')->onDelete('CASCADE')->onUpdate('CASCADE');
 $table->integer('amount');

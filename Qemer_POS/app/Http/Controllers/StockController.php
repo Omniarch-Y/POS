@@ -191,7 +191,7 @@ class stockController extends Controller
         return redirect()->back()->with('error', 'Sorry there is no product added to this category yet');
 }
     public function display(){
-        $stocks = Stock::inRandomOrder()->paginate(6);
+            $stocks = Stock::inRandomOrder()->paginate(6);
             $category = Category::inRandomOrder()->paginate(5);
             $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
             $cartTotal=$myCart->count();

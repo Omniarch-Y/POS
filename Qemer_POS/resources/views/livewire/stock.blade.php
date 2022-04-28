@@ -25,7 +25,7 @@
                      <tr>
                      <form action="{{ url('storeCart') }}" method="POST">
                         @csrf
-                     <th scope="row">{{$stock->id}}</th>
+                     <th>{{$stock->id}}</th>
                      <td>{{$stock->name}}</td>
                      <td>{{$stock->price}}</td>
                      <td>{{$stock->total_amount}}</td>

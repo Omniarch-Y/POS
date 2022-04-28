@@ -26,7 +26,7 @@ class StockCollection extends Component
         $search = '%'.$this->search.'%';
 
         $stockCollection = Stocks::where('stocks.name','like', $search)
-                                ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
+                                ->join('categories', 'stocks.category_id', '=', 'categories.id')
                                 ->orWhere('categories.category_name', 'like', $search)           
                                 ->paginate(8);
 
