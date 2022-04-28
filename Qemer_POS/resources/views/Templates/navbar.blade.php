@@ -98,8 +98,8 @@
              <div class="container ">
                 <div class="d-flex justify-content-center align-items-center ">
                       
-                      <strong><p style="color:rgb(0, 241, 32);" class="text-center display-4">{{ $totalItemPrice }}</p></strong> 
-                      <p class=" text-dark   text-center display-4 ">-ETB</p>
+                      <strong><p style="color:rgb(0, 241, 32);" class="text-center display-6">{{ $totalItemPrice }}</p></strong> 
+                      <p class=" text-dark   text-center display-6 ">Br</p>
              </div>
              </div>
              <div class="container">

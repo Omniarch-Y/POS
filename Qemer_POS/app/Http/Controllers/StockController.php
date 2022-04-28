@@ -68,26 +68,6 @@ class stockController extends Controller
                 return redirect()->back()->with('error','Sorry, there is no category with this name');
 
     }
-    public function storeCategories(Request $request){
-        
-        $request->validate(
-            [
-                'name' => 'required','unique'
-            ]
-        );
-        
-        $newCategory=new Category;
-        $newCategory->category_name=$request->name;
-        $newCategory->save();
-        return redirect()->back()->with('success', 'Category added successfully!!');
-    }
-    public function displayForm(){
-        $categories= Category::all();
-
-        return view('Templates.createItems',[
-            'categories' => $categories
-        ]);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -154,7 +134,8 @@ class stockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stocks = Stock::find($id);
+        return view('template.editStock')->with('stocks'->$stock);
     }
 
     /**
@@ -166,7 +147,10 @@ class stockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stocks = Stock::find($id);
+        $input = $request->all();
+        $stocks->update($input);
+        return redirect('Template.stockCollection')->with('message', 'stock updated');
     }
 
     /**
@@ -176,8 +160,10 @@ class stockController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $stocks = Stock::find($id);
+        $stocks->delete();
+        return redirect('Template.stockCollection')->with('message','stock deleted');
     }
 
     public function sortItems($id){
@@ -204,4 +190,37 @@ class stockController extends Controller
     
         return redirect()->back()->with('error', 'Sorry there is no product added to this category yet');
 }
+    public function display(){
+        $stocks = Stock::inRandomOrder()->paginate(6);
+            $category = Category::inRandomOrder()->paginate(5);
+            $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
+            $cartTotal=$myCart->count();
+            $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
+            $cash= Cart::where('status',0)->where('casher_id',auth()->user()->id)->sum('total_price');
+            $vat=$cash*0.15;
+            $vatIncluded=$vat+$cash;
+            $value= number_format( $vatIncluded, 2, '.', '');
+        
+            // $cashOut=$cash->sum();
+
+
+
+            return view('viewCollection', [
+                'stocks' => $stocks,
+                'categories' => $category,
+                'informations'=>$cartItems,
+                'totalItemPrice' => $value,
+                'cartTotal'=>$cartTotal,
+                
+            
+            ]);
+    }
+
+    public function editView()
+    {
+        $category = Category::inRandomOrder()->paginate(5);
+        return view('Templates.editStock',['categories' => $category]);
+        
+    }
+
 }

@@ -69,7 +69,7 @@
   <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
   <div class="PaidWith">Paid with CASH</div>
   <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
-  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -z</div>
   <div class="text-center">THANK YOU</div>
   <div class="text-center">HAVE A NICE DAY</div>
 </div>
