@@ -50,7 +50,7 @@
         </li>
         <li>
             <a href="/receiptList">
-                <i   class="bi bi-printer-fill fs-5" aria-hidden="true" ></i>
+                <i   class="bi bi-receipt fs-5" aria-hidden="true" ></i>
                 <span class="links_name">Recipt list</span>
             </a>
             <span class="tooltip">Recipt list</span>
@@ -58,7 +58,7 @@
 
         <li>
             <a href="/collection">
-                <i class="bi bi-box fs-5" aria-hidden="true" ></i>
+                <i class="bi bi-basket2-fill fs-5" aria-hidden="true" ></i>
                 <span class="links_name">Stock</span>
             </a>
             <span class="tooltip">Stock</span>
