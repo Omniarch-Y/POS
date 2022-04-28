@@ -50,16 +50,6 @@ class Stock extends Component
         if ($stocks !== null) return view('livewire.stock',['stocks' => $stocks] );
         else return redirect()->back()->with('error', 'no search result');
 
-        // $searchTerm = '%'.$this->searchTerm.'%';
-
-        // $stockCollection = Stocks::where('stocks.name','like', $search)
-        //                         ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
-        //                         ->orWhere('categories.category_name', 'like', $search)           
-        //                         ->paginate(8);
-
-        // if ($stockCollection !== null) return view('livewire.stockCollection',['stockCollection' => $stockCollection] );
-        // else return redirect()->back()->with('error', 'no search result');
-
     }
 
 }

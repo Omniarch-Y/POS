@@ -51,7 +51,6 @@ Route::controller(ReceiptController::class)->group( function (){
     Route::get('anyReceipt','sortReceipt');
     Route::get('receipt/{id}','show');
     
-    
 });
 
 Route::controller(CategoryController::class)->group( function (){
