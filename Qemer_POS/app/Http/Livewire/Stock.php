@@ -35,14 +35,9 @@ class Stock extends Component
                                 ->join('categories', 'stocks.category_id', '=', 'categories.id')
                                 ->orWhere('categories.category_name', 'like', $searchTerm)           
                                 ->paginate(8);
-                              
-                                                        
-        if ($stocks !== null)
-         return view('livewire.stock',[
-            'stocks' => $stocks,
-            
-            ] );
-        else return redirect()->back()->with('error', 'no search result'); 
+
+        if ($stocks !== null) return view('livewire.stock',['stocks' => $stocks] );
+        else return redirect()->back()->with('error', 'no search result');
 
     }
 

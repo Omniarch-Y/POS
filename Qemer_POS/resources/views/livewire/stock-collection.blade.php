@@ -2,11 +2,11 @@
 
 {{-- start of item list container --}}
 <div class="container">
-   <div class="row">
-      <div class="col-md-6">
+      <div class=" container col-md-6">
        <input type="text" class="form-control" placeholder="Search..." wire:model="search" style="margin-top:2rem;"/>
     </div>
-    <div class=" col-md-6">
+    <div class="row">
+    <div class=" container col-md-6">
         <button class="btn btn-primary"  style="margin-top:2rem;">Add new Item</button>
     </div>
    </div>

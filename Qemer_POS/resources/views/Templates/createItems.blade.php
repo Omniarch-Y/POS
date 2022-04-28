@@ -59,7 +59,7 @@
                                 <div class="col-md-6  ">
                                      <select class="form-control  " id="role" name="category" required focus>
                                          @foreach ($categories as $category)       
-                                         <option value="{{ $category->id }}"  selected>{{ $category->category_name }}</option>        
+                                         <option value="{{ $category->c_id }}"  selected>{{ $category->category_name }}</option>        
                                          @endforeach
                                          <option value="Select Role" disabled selected>Click to Select Category</option>       
                                      </select>

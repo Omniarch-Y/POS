@@ -40,34 +40,6 @@ class stockController extends Controller
         
     }
 
-    public function searchItems(Request $request){
-
-        $catId = Category::select('id')->where('name',$request->categoryName)->get();
-        $idFound=Category::find($catId)->first();
-        if($catId->count()>0){
-            $category = Category::inRandomOrder()->paginate(5);
-            $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
-            $cash= Cart::where('status',0)->where('casher_id',auth()->user()->id)->sum('total_price');
-            $stocks= Stock::where('category_id',$idFound->id)->paginate(6);
-            $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
-            $cartTotal=$myCart->count();
-            $vat=$cash*0.15;
-            $vatIncluded=$vat+$cash;
-            $value= number_format( $vatIncluded, 2, '.', '');
-             
-            
-                return view('home', [
-
-                    'stocks' => $stocks,
-                    'categories' => $category,
-                    'informations'=>$cartItems,
-                    'totalItemPrice' => $value,
-                    'cartTotal'=>$cartTotal,
-                ]);
-            }
-                return redirect()->back()->with('error','Sorry, there is no category with this name');
-
-    }
 
     /**
      * Show the form for creating a new resource.
