@@ -30,6 +30,7 @@ Route::controller(StockController::class)->group( function (){
 
     Route::get('singleItem/{id}','show');
     Route::post('storeItem','store');
+    Route::get('edit/{id}','edit');
     Route::put('updateItem/{id}','update');
     Route::delete('deleteStock/{id}','destroy');
     Route::get('sortList/{id}','sortItems');

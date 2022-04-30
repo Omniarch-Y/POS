@@ -12,7 +12,13 @@
                <thead>
                   <tr>
                      <th scope="col">Id</th>
-                     <th scope="col">Name</th>
+                     <th scope="col">
+                        Name
+                        {{-- <span wire:click="sortBy('name') class="float-right text-sm" style="cursor: pointer;">
+                           <i class="bi bi-arrow-up text-muted"></i>
+                           <i class="bi bi-arrow-down"></i>
+                        </span> --}}
+                     </th>
                      <th scope="col">Price</th>
                      <th scope="col">Stock amount</th>
                      <th scope="col">Amount</th>

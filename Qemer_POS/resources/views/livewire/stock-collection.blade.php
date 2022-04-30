@@ -23,7 +23,6 @@
 
                      @foreach($stockCollection as $stock)
                      <tr>
-
                      <th scope="row">{{$stock->id}}</th>
                      <td>{{$stock->name}}</td>
                      <td>{{$stock->price}}</td>
@@ -32,10 +31,10 @@
                      <td>
                         <div class="row">
                            <div class="col-sm-4">
-                        <a href ="{{ url('/editView'.'/'.$stock->id) }}"type="submit" class="btn"><i class="bi bi-pencil-square icon-green fs-4" aria-hidden="true" ></i></a>
+                        <a href ="{{ url('edit/'.$stock->id) }}"type="submit" class="btn"><i class="bi bi-pencil-square icon-green fs-4" aria-hidden="true" ></i></a>
                      </div>
                      <div class="col-sm-4">
-                        <form action="{{ url('/deleteStock'.'/'.$stock->id) }}"  method="POST" accept-charset="UTF-8">  
+                        <form action="{{ url('deleteStock'.'/'.$stock->id) }}"  method="POST" accept-charset="UTF-8">  
                            @csrf
                            @method('DELETE')
                         <button type="submit" class="btn"><i class="bi bi-trash icon-red fs-4" aria-hidden="true" ></i></button>
