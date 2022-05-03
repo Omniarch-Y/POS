@@ -48,6 +48,8 @@
  
   <div id="container"> 
     <div class="item">{{ $information->item->name}} * {{$information->amount}}</div>
+    <input type="text" name="stock_id" hidden value="{{ $information->item->id}}">
+    <input type="text" name="amount" hidden value="{{ $information->amount}}">
     <div class="price">{{$information->total_price}}Br</div>
   </div>
   @endforeach
