@@ -13,17 +13,51 @@ class Stock extends Component
 {
 
     use WithPagination;
+
     protected $paginationTheme = 'bootstrap';
 
     public $searchTerm = '';
+
     public $category_name;
+
+    public $sortColumnName = 'asc';
+
+    public $sortDirection = 'desc';
 
     public function updatedSearch()
     {
         $this->page = 1;
     }
 
-  
+    // public function updatingSearchInput()
+
+    // {
+
+    //     $this->gotoPage(1);
+
+    // }
+
+    // public function updatingSearchInput(): void
+    // {
+    //     $this->gotoPage(1);
+    // }
+
+    public function sortBy($columnName){
+
+        if($this->sortColumnName === $columnName){
+
+            $this->sortDirection = $this->swapSortDirection();
+
+        }else {
+            $this->sortDirection = 'asc';
+        }
+
+          $this->sortColumnName = $columnName;
+        }
+    
+        public function swapSortDirection(){
+            return $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        }
     
     public function render()
 
@@ -33,7 +67,8 @@ class Stock extends Component
         
         $stocks = Stocks::where('stocks.name' ,'like' ,$searchTerm)
                                 ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
-                                ->orWhere('categories.category_name', 'like', $searchTerm)           
+                                ->orWhere('categories.category_name', 'like', $searchTerm)
+                                // ->orderBy($this->sortColumnName, $this->sortDirection)           
                                 ->paginate(8);
 
         if ($stocks !== null) return view('livewire.stock',['stocks' => $stocks] );

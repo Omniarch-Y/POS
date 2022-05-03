@@ -40,11 +40,21 @@ class CategoryController extends Controller
                 'name' => 'required','unique'
             ]
         );
-        
-        $newCategory=new Category;
-        $newCategory->category_name=$request->name;
-        $newCategory->save();
-        return redirect()->back()->with('success', 'Category added successfully!!');
+
+        //handling  Integrity constraint violation
+        $categoryExists = Category::where('category_name',$request->name)->get();
+        if($categoryExists->count()>0){
+                  
+               return redirect()->back()->with('error', 'Category already exists!!');
+        }
+
+        else{
+               $newCategory=new Category;
+               $newCategory->category_name=$request->name;
+               $newCategory->save();
+               return redirect()->back()->with('success', 'Category added successfully!!');
+            }
+     
     }
 
     public function displayForm(){

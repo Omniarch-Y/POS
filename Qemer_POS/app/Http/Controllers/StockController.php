@@ -34,8 +34,6 @@ class stockController extends Controller
             'informations'=>$cartItems,
             'totalItemPrice' => $value,
             'cartTotal'=>$cartTotal,
-            
-        
         ]);
         
     }
@@ -72,7 +70,15 @@ class stockController extends Controller
         $imageName= $image->getClientOriginalName();
         $image->storeAs('public\itemImages',time().$imageName);
         
-        //creating a new item
+        //checking if the item already exists in the stock 
+        $itemExists= Stock::where('name',$request->name)->where('category_id',$request->category)->first();
+        if($itemExists){
+           $newAmount= $itemExists->total_amount + $request->total_amount;
+           Stock::where('name',$request->name)->where('category_id',$request->category)->update(['total_amount' => $newAmount]);
+           return redirect()->back()->with('success','Item amount updated successfully');
+        }
+        else{
+               //creating a new item
         $newItem= new Stock();
         $newItem->name= $request->name;
         $newItem->total_amount= $request->total_amount;
@@ -80,9 +86,10 @@ class stockController extends Controller
         $newItem->image= time().$imageName;
         $newItem->category_id= $request->category;
         $newItem->save();
+        return redirect()->back()->with('success','Item added successfully');
 
-        return redirect('/itemForm')->with('success','Item added successfully');
-
+        }
+     
 
         
     }
@@ -106,8 +113,9 @@ class stockController extends Controller
      */
     public function edit($id)
     {
-        $stocks = Stock::find($id);
-        return view('template.editStock')->with('stocks'->$stock);
+        $stock = Stock::find($id);
+        $categories = Category::inRandomOrder()->paginate(5);
+        return view('Templates.editStock',compact('stock','categories'));
     }
 
     /**
@@ -120,9 +128,10 @@ class stockController extends Controller
     public function update(Request $request, $id)
     {
         $stocks = Stock::find($id);
+        $stocks->category_id = $request->input('category_id');
         $input = $request->all();
         $stocks->update($input);
-        return redirect('Template.stockCollection')->with('message', 'stock updated');
+        return redirect('/collection')->with('message', 'stock updated');
     }
 
     /**
@@ -135,7 +144,7 @@ class stockController extends Controller
     {   
         $stocks = Stock::find($id);
         $stocks->delete();
-        return redirect('Template.stockCollection')->with('message','stock deleted');
+        return redirect('/collection')->with('message','stock deleted');
     }
 
     public function sortItems($id){
@@ -156,7 +165,6 @@ class stockController extends Controller
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
                  'cartTotal'=>$cartTotal
-                
             ]);
     }
     
@@ -175,23 +183,19 @@ class stockController extends Controller
         
             // $cashOut=$cash->sum();
 
-
-
             return view('viewCollection', [
                 'stocks' => $stocks,
                 'categories' => $category,
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
                 'cartTotal'=>$cartTotal,
-                
-            
             ]);
     }
 
     public function editView()
     {
-        $category = Category::inRandomOrder()->paginate(5);
-        return view('Templates.editStock',['categories' => $category]);
+        $categories = Category::inRandomOrder()->paginate(5);
+        return view('Templates.editStock',['categories' => $categories]);
         
     }
 
