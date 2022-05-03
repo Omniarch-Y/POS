@@ -110,7 +110,6 @@
     <div class="col justify-content-center align-items-center text-center">
     <button type="" name="" data-bs-toggle="modal" data-bs-target="#addCategory" class="btn btn-primary  fs-2">Add a new category</button>
     </div>
-
 </div>
 
 
@@ -143,7 +142,6 @@
                                     </span>
                                 @enderror
                                 
-                            </div>
                         </div>
                          
                         <div class="form-group row mb-0">

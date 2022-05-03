@@ -2,14 +2,80 @@
 
 {{-- start of item list container --}}
 <div class="container">
-      <div class=" container col-md-6">
-       <input type="text" class="form-control" placeholder="Search..." wire:model="search" style="margin-top:2rem;"/>
+   <div class="container">
+      <div class="row">
+         <div class=" col-md-6">
+       <input type="text" class="form-control" placeholder="Search..." wire:model="search" style="margin-top:2rem; margin-left:10rem;"/>
     </div>
-    <div class="row">
-    <div class=" container col-md-6">
-        <button class="btn btn-primary"  style="margin-top:2rem;">Add new Item</button>
+    <div class="col-md-6">
+        <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addItem"  style="margin-top:2rem; margin-left:10rem; margin-right:1rem;">Add new Item</button>
+        <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addCategorys"   style="margin-top:2rem;margin-left:0rem;">Add new Category</button>
+     
     </div>
    </div>
+   </div>
+
+ 
+
+<!-- Start of Modal for adding new Item -->
+<div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+            <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+         <div class="modal-body">
+            <div class="container-fluid">
+               Add rows here
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+         </div>
+      </div>
+   </div>
+</div>
+<!--End of  Modal for adding new Item -->
+
+
+<!-- Start of Modal for adding new Category -->
+<div class="modal fade" id="addCategorys" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+            <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+         <div class="modal-body">
+            <div class="container-fluid">
+               Add rows here
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+         </div>
+      </div>
+   </div>
+</div>
+<!--End of  Modal for adding new Category -->
+
+<script>
+   var modelId = document.getElementById('modelId');
+
+   modelId.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        let button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+        let recipient = button.getAttribute('data-bs-whatever');
+
+      // Use above variables to manipulate the DOM
+   });
+</script>
+
+ 
     
     <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
   
