@@ -1,11 +1,29 @@
 
 
 {{-- start of item list container --}}
-<div class="container">
-    <div class="container col-md-6">
+<div class="container"> 
+<center><div class="row mx-auto justify-content-center align-items-center ">
+   <center> <div class="container col-md-6">
        <input type="text"  class="form-control" placeholder="Search..." wire:model="searchTerm" style="margin-top:2rem;"/>
     </div>
-    
+   </center>
+    <div class=" mx-0 px-0 row justify-content-center align-items-center">
+       <div class="col-md-2" style="margin-top:1rem;">
+       <div class="bg-success" style="width:10px;height:10px"> </div>
+       <p>Enough items available</p>
+      </div>
+
+      <div class="col-md-2" style="margin-top:1rem;">
+       <div class="bg-warning" style="width:10px;height:10px"> </div>
+       <p>Item is running out</p>
+      </div>
+
+      <div class="col-md-2" style="margin-top:1rem;">
+       <div class="bg-danger" style="width:10px;height:10px"> </div>
+       <p>Item run out!!</p>
+      </div>
+    </div>
+    </div></center>
     <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
   
             <table class="table table-responsive table-hover table-light my-5">
