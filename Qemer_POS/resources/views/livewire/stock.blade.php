@@ -34,8 +34,18 @@
                      <th>{{$stock->id}}</th>
                      <td>{{$stock->name}}</td>
                      <td>{{$stock->price}}</td>
-                     <td>{{$stock->total_amount}}</td>
-                     <td>
+                     @if ($stock->total_amount>10)
+                     <td class="text-success"><strong>{{$stock->total_amount}}</strong></td>
+                     @endif
+                     @if ($stock->total_amount>0 && $stock->total_amount<10)
+                  <td class="text-warning"> <strong>{{$stock->total_amount}}</strong> </td>
+                     @endif
+                     @if ($stock->total_amount<1)
+                   <td class="text-danger"><strong>{{$stock->total_amount}}</strong> </td>
+                   <td class="text-danger"><strong>Item run-out of stock</strong></td>
+                     @endif
+                     @if ($stock->total_amount>0)
+                             <td>
                         <div>
                            <a class="btn dec" type="submit" ><i class="bi fs-5 bi-dash-circle-fill"></i></a>
                            <input type="number" class="text-center" id="amountX" name="amount" value='0' readonly/>
@@ -49,6 +59,8 @@
                     <td>
                        <button type="submit" class="btn btn-primary mx-auto my-1"><i class="bi bi-cart-plus-fill fs-5" aria-hidden="true" ></i></button>
                     </td>
+                     @endif
+                
                     </form>
                     </tr>
                     @endforeach
