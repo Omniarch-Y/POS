@@ -35,7 +35,7 @@
                               
                               @foreach ($receiptNo as $info )
                               <div class="col-md-3">
-                              <td class="text-center mt-3 "><a class="btn btn-success" href="{{'receipt/' . $info->receipt_number }}"> <h4>{!! $info->receipt_number  !!}</h4>  </a></td>
+                              <td class="text-center mt-3 "><a class="btn btn-success mt-3" href="{{'receipt/' . $info->receipt_number }}"><h4>{!! $info->receipt_number  !!}</h4>  </a></td>
                               </div>
                               @endforeach
                              

@@ -42,20 +42,25 @@ class CartController extends Controller
 
     public function anyReport(Request $request){
 
-          
-        
-        $cartItems = Cart::where('status',1)->where('created_at',$request->date)->with('item')->orderBy('created_at','DESC')->paginate(5);
+        $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
+        $soldItems = Cart::where('status',1)->where('created_at',$request->date)->with('item')->orderBy('created_at','DESC')->paginate(5);
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cartTotal=$myCart->count();
-        if($cartItems->count()>0){
+         /* For navbar */
+        $cartCash= Cart::where('status',0)->where('casher_id',auth()->user()->id)->sum('total_price');
+        $vat=$cartCash*0.15;
+        $vatIncluded=$vat+$cartCash;
+        $cartValue= number_format( $vatIncluded, 2, '.', '');
+        /* End For navbar */
+        if($soldItems->count()>0){
             $cash= Cart::where('status',1)->where('created_at',$request->date)->sum('total_price');
-            $value= number_format($cash);
             $Total= number_format($cash);
               return view('dailyReport',[
+                'soldItems'=>$soldItems,
                 'informations'=>$cartItems,
                 'cash' => $Total,
                 'cartTotal'=>$cartTotal,
-                'totalItemPrice' => $value,
+                'totalItemPrice' => $cartValue,
             ]);
         }  
         return redirect()->back()->with('error','No item has been purchased in this date ');    
@@ -84,6 +89,11 @@ class CartController extends Controller
            'amount'=>'required',
         ]);
 
+        $num = $request->amount;
+
+        if ($num < 1){
+            return redirect()->back()->with('success',"Can't add to cart with 0 amount"); 
+        }else{
         $newItem = new Cart();
         $newItem->amount = $request->amount;
         $newItem->total_price = $request->price * $request->amount;
@@ -92,7 +102,7 @@ class CartController extends Controller
         $newItem->save();
 
         return redirect()->back()->with('success','Cart added successfully');
-
+        }
     }
 
     /**
@@ -167,7 +177,7 @@ class CartController extends Controller
         //
     }
     public function listReport(){
-
+        
         $soldItems = Cart::where('status',1)->with('item')->orderBy('created_at','DESC')->paginate(5);
         $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cash= Cart::where('status',1)->where('created_at',now()->format('Y-m-d'))->sum('total_price');
@@ -175,17 +185,24 @@ class CartController extends Controller
         $cartTotal=$myCart->count();
         $value= number_format($cash);
         
-        $Total= number_format($cash);       
+        $Total= number_format($cash);
+        
+        $cartCash= Cart::where('status',0)->where('casher_id',auth()->user()->id)->sum('total_price');
+        $vat=$cartCash*0.15;
+        $vatIncluded=$vat+$cartCash;
+        $cartValue= number_format( $vatIncluded, 2, '.', '');
+
             return view('dailyReport',[
                  
                 'soldItems'=>$soldItems,
                 'informations'=>$cartItems,
                 'cash' => $Total,
                 'cartTotal'=>$cartTotal,
-              'totalItemPrice' => $value,
+            //   'totalItemPrice' => $value,
+              'totalItemPrice' => $cartValue,
                  
                 
-            ]);
-    
-}
+            ]);         
+     }
+     
 }
