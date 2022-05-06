@@ -26,16 +26,16 @@ Auth::routes();
 Route::get('/home', [StockController::class, 'index'])->name('home');
 
 // Route for stock items
-Route::controller(StockController::class)->group( function (){
+Route::controller(StockController::class)->middleware('isAdmin')->group( function (){
 
     Route::get('singleItem/{id}','show');
-    Route::post('storeItem','store')->middleware('isAdmin');
-    Route::get('edit/{id}','edit')->middleware('isAdmin');
-    Route::put('updateItem/{id}','update')->middleware('isAdmin');
-    Route::delete('deleteStock/{id}','destroy')->middleware('isAdmin');
+    Route::post('storeItem','store');
+    Route::get('edit/{id}','edit');
+    Route::put('updateItem/{id}','update');
+    Route::delete('deleteStock/{id}','destroy');
     Route::get('sortList/{id}','sortItems');
-    Route::get('collection','display')->middleware('isAdmin');
-    Route::get('editView','editView')->middleware('isAdmin');
+    Route::get('collection','display');
+    Route::get('editView','editView');
 });
 
 Route::controller(CartController::class)->group(function(){
