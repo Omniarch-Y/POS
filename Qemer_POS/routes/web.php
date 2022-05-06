@@ -29,20 +29,20 @@ Route::get('/home', [StockController::class, 'index'])->name('home');
 Route::controller(StockController::class)->group( function (){
 
     Route::get('singleItem/{id}','show');
-    Route::post('storeItem','store');
-    Route::get('edit/{id}','edit');
-    Route::put('updateItem/{id}','update');
-    Route::delete('deleteStock/{id}','destroy');
+    Route::post('storeItem','store')->middleware('isAdmin');
+    Route::get('edit/{id}','edit')->middleware('isAdmin');
+    Route::put('updateItem/{id}','update')->middleware('isAdmin');
+    Route::delete('deleteStock/{id}','destroy')->middleware('isAdmin');
     Route::get('sortList/{id}','sortItems');
-    Route::get('collection','display');
-    Route::get('editView','editView');
+    Route::get('collection','display')->middleware('isAdmin');
+    Route::get('editView','editView')->middleware('isAdmin');
 });
 
 Route::controller(CartController::class)->group(function(){
-    Route::post('storeCart','store');
-    Route::post('receipt','index');
-    Route::get('dailyReport','listReport');
-    Route::get('anyReport','anyReport');
+    Route::post('storeCart','store')->middleware('isCasher');
+    Route::post('receipt','index')->middleware('isCasher');;
+    Route::get('dailyReport','listReport')->middleware('isAdmin');;
+    Route::get('anyReport','anyReport')->middleware('isAdmin');;
     Route::post('changeStatus','changeStatus');
     Route::get('returnToStock/{id}','takeBack');
 
@@ -56,6 +56,6 @@ Route::controller(ReceiptController::class)->group( function (){
     
 });
 
-Route::controller(CategoryController::class)->group( function (){
+Route::controller(CategoryController::class)->middleware('isAdmin')->group( function (){
     Route::post('addCategories', 'store');
 });

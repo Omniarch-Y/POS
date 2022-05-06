@@ -12,6 +12,10 @@ class ReceiptController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct(){
+         return $this->middleware('isAdmin');
+     }
     public function index()
     {
         $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();

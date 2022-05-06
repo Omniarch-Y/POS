@@ -14,6 +14,7 @@ class stockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $stocks = Stock::inRandomOrder()->paginate(6);
@@ -37,6 +38,7 @@ class stockController extends Controller
         ]);
         
     }
+
 
 
     /**

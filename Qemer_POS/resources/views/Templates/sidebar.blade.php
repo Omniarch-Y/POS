@@ -32,6 +32,8 @@
             </a>
             <span class="tooltip">Cart</span>
         </li>
+@if (auth()->user()->role=='admin')
+    
 
         <li>
             <a href="/dailyReport">
@@ -56,6 +58,7 @@
             </a>
             <span class="tooltip">Stock</span>
         </li>
+        @endif
     </ul>
 
     <div class="profile_content">
