@@ -92,7 +92,7 @@ class CartController extends Controller
         $num = $request->amount;
 
         if ($num < 1){
-            return redirect()->back()->with('success',"Can't add to cart with 0 amount"); 
+            return redirect()->back()->with('error',"Can't add to cart with 0 amount"); 
         }else{
         $newItem = new Cart();
         $newItem->amount = $request->amount;
@@ -169,10 +169,6 @@ class CartController extends Controller
              $generateFS->tin_number=$request->tin_number;
              $generateFS->save();
         }
-        //This will decrease the total amount of a single item. further validation will be added later.
-        $itemExists=Stock::where('id',$request->stock_id)->first();
-        $newAmount=$itemExists->total_amount-$request->amount;
-        Stock::where(['id' => $request->stock_id])->update(['total_amount' => $newAmount]);
         $query1=Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->update(['rno' => $request->FS]);
         $query1=Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->update(['tno' => $request->tin_number]);
         $query2=Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->update(['status' => '1']);
