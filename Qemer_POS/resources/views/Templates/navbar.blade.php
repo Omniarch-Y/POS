@@ -97,7 +97,7 @@
                                 <td>
                                     <div class="col-sm-4">
                                         <a href="{{ url('returnToStock'.'/'.$info->id) }}" type="submit" class="btn"><i
-                                                class="bi bi-trash icon-red fs-6" aria-hidden="true"></i></a>
+                                                class="bi bi-x-lg icon-red fs-6" aria-hidden="true"></i></a>
                                     </div>
                                 </td>
                             </tr>
