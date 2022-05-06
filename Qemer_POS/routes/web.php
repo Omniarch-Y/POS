@@ -44,6 +44,8 @@ Route::controller(CartController::class)->group(function(){
     Route::get('dailyReport','listReport');
     Route::get('anyReport','anyReport');
     Route::post('changeStatus','changeStatus');
+    Route::get('returnToStock/{id}','takeBack');
+
 });
 
 Route::controller(ReceiptController::class)->group( function (){

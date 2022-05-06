@@ -83,15 +83,30 @@ class CartController extends Controller
         $request->validate([
            'amount'=>'required',
         ]);
-
         $newItem = new Cart();
         $newItem->amount = $request->amount;
         $newItem->total_price = $request->price * $request->amount;
         $newItem->stock_id = $request->stock_id;
         $newItem->casher_id = auth()->user()->id;
         $newItem->save();
-
+        //decrease by x amount of quantity from stock every time you insert an item to cart
+        $itemExists=Stock::where('id',$request->stock_id)->first();
+        $newAmount=$itemExists->total_amount-$request->amount;
+        Stock::where(['id' => $request->stock_id])->update(['total_amount' => $newAmount]);
         return redirect()->back()->with('success','Cart added successfully');
+
+    }
+     
+    public function takeBack(Request $request,$id){
+        $cartItem= Cart::find($id);
+        //updating the stock item amount when item is returned from cart.
+        $itemExists=Stock::where('id',$cartItem->stock_id)->first();
+        $amount=$cartItem->amount;
+        $newAmount=$itemExists->total_amount+$amount;
+        Stock::where(['id' => $cartItem->stock_id])->update(['total_amount' => $newAmount]);
+        $cartItem->delete();
+        return redirect()->back();
+        
 
     }
 
