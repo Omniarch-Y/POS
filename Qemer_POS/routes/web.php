@@ -58,5 +58,4 @@ Route::controller(ReceiptController::class)->group( function (){
 
 Route::controller(CategoryController::class)->group( function (){
     Route::post('addCategories', 'store');
-    Route::get('/itemForm','displayForm');
 });

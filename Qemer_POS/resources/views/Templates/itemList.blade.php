@@ -1,6 +1,6 @@
 {{-- start of collabsable  list  --}}
-<div class="home_content   " style="float:right; padding-right:-100rem !important;">
-   <div class="container " style="margin-top:2rem">
+<div class="home_content" style="float:right; padding-right:-100rem !important;">
+   <div class="container" style="margin-top:1rem">
       <strong>    
          @if ($message = Session::get('error'))
          <div class="alert alert-danger">

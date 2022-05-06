@@ -28,7 +28,7 @@ class StockCollection extends Component
         $stockCollection = Stocks::where('stocks.name','like', $search)
                                 ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
                                 ->orWhere('categories.category_name', 'like', $search)           
-                                ->paginate(8);
+                                ->paginate(5);
         $categories = categories::all();
 
         if ($stockCollection !== null) return view('livewire.stock-collection',[

@@ -88,7 +88,7 @@
             </table>
          </div>
 
-  <div class="container " style="margin-top:5rem">
+  <div class="container " style="margin-top:0rem">
      <div class="d-flex justify-content-center align-items-center ">
          <h5>{{ $stocks->links() }}</h5>
      </div>

@@ -42,13 +42,6 @@
         </li>
 
         <li>
-            <a href="/itemForm">
-                <i   class="bi bi-gear-fill fs-5" aria-hidden="true" ></i>
-                <span class="links_name">Manage items</span>
-            </a>
-            <span class="tooltip">Manage items</span>
-        </li>
-        <li>
             <a href="/receiptList">
                 <i   class="bi bi-receipt fs-5" aria-hidden="true" ></i>
                 <span class="links_name">Receipt list</span>
