@@ -40,7 +40,7 @@
   @endforeach --}}
   <div class="text-center">DATE :{{$date->format('Y-m-d')}}</div>
   <div class="text-center mb-1">CASHER :{{auth()->user()->name}}</div>
-  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
   @foreach ($informations as $information)
  
   <div id="container"> 
@@ -48,7 +48,7 @@
     <div class="price">{{$information->total_price}}Br</div>
   </div>
   @endforeach
-  <div class="e">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+  <div class="e">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
   <div id="container"> 
  <div class="x">TAXABLE</div>
     <div class="priceView">{{$totalItemPrice}}Br</div>
@@ -61,15 +61,15 @@
     <strong class="price">TOTAL</strong>
     <strong class="priceView">{{$total}}Br</strong>
   </div>
-  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
   <div id="container"> 
     <div class="Cash">CASH:</div>
     <div class="cashView">{{$total}}Br</div>
   </div>
-  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
   <div class="PaidWith">Paid with CASH</div>
-  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
-  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -z</div>
+  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+  <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
   <div class="text-center">THANK YOU</div>
   <div class="text-center">HAVE A NICE DAY</div>
 </div>
