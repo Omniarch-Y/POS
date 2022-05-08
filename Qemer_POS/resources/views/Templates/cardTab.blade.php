@@ -11,8 +11,7 @@
     <div class="container" style="margin-top:15rem">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                        <i class=" text-white bi bi-lightning-charge-fill fs-2" aria-hidden="true"></i>
-                        <div class=" text-white logo_name fs-5">Qemer pos</div>                 
+                        <i class=" text-white bi bi-lightning-charge-fill fs-2" aria-hidden="true">Qemer pos</i>
                 <div class="card shadow" style=" width:100%; border-radius:12px">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
