@@ -19,12 +19,12 @@
 
         <li>
             <a href="#">
-                <i class="bi bi-person-fill fs-5" aria-hidden="true"></i>
+                <i data-bs-toggle="modal" data-bs-target="#wee" class="bi bi-person-fill fs-5" aria-hidden="true"></i>
                 <span class="links_name">User</span>
             </a>
             <span class="tooltip">User</span>
         </li>
-
+        @extends('Templates.userModal')
         <li>
             <a href="#">
                 <i data-bs-toggle="modal" data-bs-target="#addCategory" class="bi bi-cart-fill fs-5" aria-hidden="true" ></i>
@@ -37,7 +37,7 @@
 
         <li>
             <a href="/dailyReport">
-                <i   class="bi bi-file-earmark-text-fill fs-5" aria-hidden="true" ></i>
+                <i class="bi bi-file-earmark-text-fill fs-5" aria-hidden="true" ></i>
                 <span class="links_name">Daily Report</span>
             </a>
             <span class="tooltip">Daily Report</span>
@@ -57,6 +57,14 @@
                 <span class="links_name">Stock</span>
             </a>
             <span class="tooltip">Stock</span>
+        </li>
+
+        <li>
+            <a href="/viewUsers">
+                <i class="bi bi-people-fill fs-5" aria-hidden="true" ></i>
+                <span class="links_name">Users</span>
+            </a>
+            <span class="tooltip">Users</span>
         </li>
         @endif
     </ul>

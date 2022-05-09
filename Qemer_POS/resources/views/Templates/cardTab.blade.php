@@ -18,17 +18,17 @@
                             <button class="nav-link active px-20" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
                                 type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        {{-- <li class="nav-item" role="presentation">
                             <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
                                 type="button" role="tab" aria-controls="register"
                                 aria-selected="false">Register</button>
-                        </li>
+                        </li> --}}
                     </ul>
                     
                     <div class="tab-content" id="myTabContent">
                            
                         {{-- tab for registration --}}
-                        <div class="card tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                        {{-- <div class="card tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
 
                             <div class="card-body">
                                 <form method="POST" action="{{ route('register') }}">
@@ -104,7 +104,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- tab for login --}}
                         <div class="card-body tab-pane fade show active" id="login" role="tabpanel"

@@ -5,6 +5,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,4 +59,15 @@ Route::controller(ReceiptController::class)->group( function (){
 
 Route::controller(CategoryController::class)->middleware('isAdmin')->group( function (){
     Route::post('addCategories', 'store');
+});
+
+Route::controller(UserController::class)->group( function (){
+    Route::get('viewUsers','index');
+    Route::get('editView','editView');
+    Route::get('editUser/{id}','edit');
+    Route::put('updateUser/{id}','update');
+    Route::delete('deleteUser/{id}','destroy');
+    Route::post('updatePass','editPassword');
+    Route::get('ViewUpdatePass','viewPass');
+    Route::post('RegisterUser','store');
 });
