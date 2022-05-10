@@ -29,18 +29,13 @@ class Stock extends Component
         $this->page = 1;
     }
 
-    // public function updatingSearchInput()
+    public function updatingSearchInput(): void
 
-    // {
+    {
 
-    //     $this->gotoPage(1);
+        $this->gotoPage(1);
 
-    // }
-
-    // public function updatingSearchInput(): void
-    // {
-    //     $this->gotoPage(1);
-    // }
+    }
 
     public function sortBy($columnName){
 

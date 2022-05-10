@@ -11,15 +11,12 @@ use App\Models\Category as categories;
 class StockCollection extends Component
 {
     use WithPagination;
+
     protected $paginationTheme = 'bootstrap';
 
     public $search = '';
-    public $category_name;
 
-    public function updatedSearch()
-    {
-        $this->page = 1;
-    }
+    public $category_name;
 
     public function render()
     {
@@ -36,5 +33,10 @@ class StockCollection extends Component
             'categories' => $categories
             ] );
         else return redirect()->back()->with('error', 'no search result');
+    }
+
+    public function updatingSearchInput()
+    {
+        $this->gotoPage(1);
     }
 }

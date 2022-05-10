@@ -21,7 +21,7 @@
                @endif     
         </strong>
     
-       <input type="text" class="form-control" placeholder="Search..." wire:model="search" style="margin-top:2rem; margin-left:10rem;"/>
+       <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search" style="margin-top:2rem; margin-left:10rem;"/>
     </div>
     <div class="col-md-6">
         <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addItem"  style="margin-top:2rem; margin-left:10rem; margin-right:1rem;">Add new Item</button>
@@ -30,8 +30,6 @@
     </div>
    </div>
    </div>
-
- 
 
 <!-- Start of Modal for adding new Item -->
 <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -71,8 +69,7 @@
                                 @enderror
                             </div>
                         </div>
-
-                        
+  
                         <div class="form-group row mb-3">    
                         <label for="total_amount" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
                                 <div class="col-md-6  ">
@@ -207,7 +204,7 @@
                         <form action="{{ url('deleteStock'.'/'.$stock->id) }}"  method="POST" accept-charset="UTF-8">  
                            @csrf
                            @method('DELETE')
-                        <button type="submit" class="btn"><i class="bi bi-trash icon-red fs-4" aria-hidden="true" ></i></button>
+                        <button type="submit" class="btn" onClick = "return confirm('Are you sure you want to continue?')"><i class="bi bi-trash icon-red fs-4" aria-hidden="true" ></i></button>
                      </form>
                   </div>
                   </div>

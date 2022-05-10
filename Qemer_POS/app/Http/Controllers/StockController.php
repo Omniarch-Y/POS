@@ -64,6 +64,7 @@ class stockController extends Controller
             'total_amount'=>'required',
             'price'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg,svg,gif',
+            'role'=>'required',
              
         ]);
 
