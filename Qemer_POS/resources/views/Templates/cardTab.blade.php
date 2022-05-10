@@ -8,12 +8,12 @@
         @endfor
     </ul>
     {{-- end animation for the background --}}
-    <div class="container" style="margin-top:15rem">
-        <div class="row justify-content-center">
+    <div class="container h-100"  style="margin-top:15rem; ">
+        <div class="row justify-content-center align-items-center">
             <div class="col-md-6">
                         <i class=" text-white bi bi-lightning-charge-fill fs-2" aria-hidden="true"></i>
                         <div class=" text-white logo_name fs-5">Qemer pos</div>                 
-                <div class="card shadow" style=" width:100%; border-radius:12px">
+                <div class="card  shadow" style=" width:100%; border-radius:12px">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active px-20" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
@@ -29,7 +29,7 @@
                     <div class="tab-content" id="myTabContent">
                            
                         {{-- tab for registration --}}
-                        <div class="card tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                        <div class="card  tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
 
                             <div class="card-body">
                                 <form method="POST" action="{{ route('register') }}">
