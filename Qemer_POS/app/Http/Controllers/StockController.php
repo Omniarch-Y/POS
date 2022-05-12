@@ -130,6 +130,7 @@ class stockController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //add image logic
         $stocks = Stock::find($id);
         $stocks->category_id = $request->input('category_id');
         $input = $request->all();

@@ -52,7 +52,7 @@
                      <th>{{$stock->id}}</th>
                      <td>{{$stock->name}}</td>
                      <td>{{$stock->price}}</td>
-                     @if ($stock->total_amount>10)
+                     @if ($stock->total_amount>=10)
                      <td class="text-success"><strong>{{$stock->total_amount}}</strong></td>
                      @endif
                      @if ($stock->total_amount>0 && $stock->total_amount<10)
