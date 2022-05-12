@@ -18,13 +18,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', [StockController::class, 'index'])->name('home');
+Route::get('/home', [StockController::class, 'index'])->name('home')->middleware('auth');
 
 // Route for stock items
 Route::controller(StockController::class)->middleware('isAdmin')->group( function (){
@@ -67,7 +67,6 @@ Route::controller(UserController::class)->group( function (){
     Route::get('editUser/{id}','edit');
     Route::put('updateUser/{id}','update');
     Route::delete('deleteUser/{id}','destroy');
-    Route::post('updatePass','editPassword');
-    Route::get('ViewUpdatePass','viewPass');
-    Route::post('RegisterUser','store');
+    Route::post('updatePass','updatePassword')->name('updatePass');
+    Route::post('registerUser','store')->name('registerUser');
 });

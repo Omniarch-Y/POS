@@ -19,7 +19,7 @@
 
         <li>
             <a href="#">
-                <i data-bs-toggle="modal" data-bs-target="#wee" class="bi bi-person-fill fs-5" aria-hidden="true"></i>
+                <i data-bs-toggle="modal" data-bs-target="#userModal" class="bi bi-person-fill fs-5" aria-hidden="true"></i>
                 <span class="links_name">User</span>
             </a>
             <span class="tooltip">User</span>

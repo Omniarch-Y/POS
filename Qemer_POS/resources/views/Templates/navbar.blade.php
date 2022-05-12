@@ -93,7 +93,7 @@
 
                                 <td scope="row">{{ $info->item->name }}</td>
                                 <td>{{ $info->amount }}</td>
-                                <td>{{$info->total_price }}</td>
+                                <td>{{$info->total_price }}Br</td>
                                 <td>
                                     <div class="col-sm-4">
                                         <a href="{{ url('returnToStock'.'/'.$info->id) }}" type="submit" class="btn"><i

@@ -34,7 +34,7 @@
   <div class="text-center">SUPERMARKET QEMER</div>
   <div class="text-center">WEE WE BOUGHT</div>
   <div class="text-center">Tel :0987654321</div>
-  <div class="text-center mt-3">RECIPT:{{$Rno}}</div>
+  <div class="text-center mt-3">RECIPT :{{$Rno}}</div>
   {{-- @foreach ($informations as $information)
   <div class="text-center">DATE :{{$information->created_at->format('Y-m-d') }}</div>
   @endforeach --}}

@@ -109,7 +109,7 @@
                         {{-- tab for login --}}
                         <div class="card-body tab-pane fade show active" id="login" role="tabpanel"
                             aria-labelledby="login-tab">
-                         <form method=" POST" action="{{ route('login') }}">
+                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="row mb-3">
                                 <label for="email"

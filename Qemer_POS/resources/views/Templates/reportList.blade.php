@@ -56,11 +56,11 @@
               </div>
               </div>
              
-               <div class="container " style="margin-top:5rem">
+               <div class="container" style="margin-top:5rem">
                 <div class="d-flex justify-content-center align-items-center ">
-                    <p class=" text-dark   display-6 ">Today's earning:</p>
+                    <p class=" text-dark display-6">Today's earning:</p>
                     <strong><p style="color:rgb(0, 241, 32);" class="display-6">{{ $cash  }}</p></strong> 
-                     <p class=" text-dark display-6 ">-ETB</p>
+                     <p class=" text-dark display-6">-ETB</p>
             </div>
             </div>
       

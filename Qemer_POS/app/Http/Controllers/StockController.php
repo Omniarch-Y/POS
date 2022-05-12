@@ -64,7 +64,6 @@ class stockController extends Controller
             'total_amount'=>'required',
             'price'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg,svg,gif',
-            'role'=>'required',
              
         ]);
 
@@ -132,10 +131,35 @@ class stockController extends Controller
     {
         //add image logic
         $stocks = Stock::find($id);
-        $stocks->category_id = $request->input('category_id');
-        $input = $request->all();
-        $stocks->update($input);
+
+       
+        if($request->category_id!==null && $request->image!==null){
+            $image = $request->file('image');
+            $imageName= $image->getClientOriginalName();
+            $image->storeAs('public\itemImages',time().$imageName);
+    
+
+            $stocks->name= $request->name;
+            $stocks->total_amount= $request->total_amount;
+            $stocks->price= $request->price;
+            $stocks->image= time().$imageName;
+            $stocks->category_id = $request->category_id;
+            $stocks->save();
+            return redirect('/collection')->with('message', 'stock updated');
+        }
+        else{
+
+            $stocks->name= $request->name;
+            $stocks->total_amount= $request->total_amount;
+            $stocks->price= $request->price;
+            $stocks->image= $stocks->image;
+            $stocks->category_id = $stocks->category_id;
+            $stocks->save();
+             
         return redirect('/collection')->with('message', 'stock updated');
+        }
+      
+       
     }
 
     /**

@@ -24,9 +24,7 @@ class User extends Component
                                 ->orWhere('phone_number', 'like', $search)           
                                 ->paginate(5);
 
-        if ($users !== null) return view('livewire.user',[
-            'users' => $users,
-            ]);
+        if ($users !== null) return view('livewire.user',['users' => $users,]);
         else return redirect()->back()->with('error', 'no search result');
     }
 

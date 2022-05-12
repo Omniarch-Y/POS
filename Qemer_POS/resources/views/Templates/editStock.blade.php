@@ -63,7 +63,7 @@
                         <div class="form-group row py-3">
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>
                             <div class="col-md-6">
-                          <input name="image"   type="file" class="form-control" value={{$stock->image}} required>
+                          <input name="image"   type="file" class="form-control" value={{$stock->image}}>
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

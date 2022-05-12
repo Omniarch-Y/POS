@@ -36,10 +36,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('isAdmin');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('isAdmin');
+    // }
 
     /**
      * Get a validator for an incoming registration request.
@@ -64,14 +64,26 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create( array $data)
     {
+
+        // $request->validate([
+        //     'avatar'=>'required|mimes:jpg,png,jpeg,svg,gif',
+             
+        // ]);
+        
+        // //avatar storing logic
+        // $avatar = $request->file('avatar');
+        // $avatarName= $avatar->getClientOriginalName();
+        // $avatar->storeAs('public\userImages',time().$avatarName);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
             'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password']),
+            // 'avatar' => time().$avatarName,
         ]);
     }
 }
