@@ -178,7 +178,6 @@
             <table class="table table-responsive table-hover table-light my-5">
                <thead>
                   <tr>
-                     <th scope="col">Id</th>
                      <th scope="col">Name</th>
                      <th scope="col">Price</th>
                      <th scope="col">Stock amount</th>
@@ -190,9 +189,8 @@
 
                      @foreach($stockCollection as $stock)
                      <tr>
-                     <th scope="row">{{$stock->id}}</th>
                      <td>{{$stock->name}}</td>
-                     <td>{{$stock->price}}</td>
+                     <td>{{$stock->price}}Br</td>
                      <td>{{$stock->total_amount}}</td>
                      <td>{{$stock->category_name}}</td>
                      <td>

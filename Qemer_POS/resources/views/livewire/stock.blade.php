@@ -29,7 +29,6 @@
             <table class="table table-responsive table-hover table-light my-5">
                <thead>
                   <tr>
-                     <th scope="col">Id</th>
                      <th scope="col">
                         Name
                         {{-- <span wire:click="sortBy('name') class="float-right text-sm" style="cursor: pointer;">
@@ -49,16 +48,15 @@
                      <tr>
                      <form action="{{ url('storeCart') }}" method="POST">
                         @csrf
-                     <th>{{$stock->id}}</th>
                      <td>{{$stock->name}}</td>
-                     <td>{{$stock->price}}</td>
+                     <td>{{$stock->price}}Br</td>
                      @if ($stock->total_amount>10)
                      <td class="text-success"><strong>{{$stock->total_amount}}</strong></td>
                      @endif
-                     @if ($stock->total_amount>0 && $stock->total_amount<10)
+                     @if ($stock->total_amount>0 && $stock->total_amount<=10)
                   <td class="text-warning"> <strong>{{$stock->total_amount}}</strong> </td>
                      @endif
-                     @if ($stock->total_amount<1)
+                     @if ($stock->total_amount<=0)
                    <td class="text-danger"><strong>{{$stock->total_amount}}</strong> </td>
                    <td class="text-danger"><strong>Item run-out of stock</strong></td>
                      @endif

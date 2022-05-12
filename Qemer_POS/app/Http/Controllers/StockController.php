@@ -64,7 +64,6 @@ class stockController extends Controller
             'total_amount'=>'required',
             'price'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg,svg,gif',
-            'role'=>'required',
              
         ]);
 
@@ -132,8 +131,16 @@ class stockController extends Controller
     {
         $stocks = Stock::find($id);
         $stocks->category_id = $request->input('category_id');
+
+        $image = $request->file('image');
+        $imageName= $image->getClientOriginalName();
+        $image->storeAs('public\itemImages',time().$imageName);
+        
         $input = $request->all();
-        $stocks->update($input);
+        if($stocks->category_id !== null){
+
+        }
+        
         return redirect('/collection')->with('message', 'stock updated');
     }
 

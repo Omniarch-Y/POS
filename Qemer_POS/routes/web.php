@@ -67,7 +67,6 @@ Route::controller(UserController::class)->group( function (){
     Route::get('editUser/{id}','edit');
     Route::put('updateUser/{id}','update');
     Route::delete('deleteUser/{id}','destroy');
-    Route::post('updatePass','editPassword');
-    Route::get('ViewUpdatePass','viewPass');
-    Route::post('RegisterUser','store');
+    Route::post('updatePass','updatePassword')->name('updatePass');
+    Route::post('registerUser','store')->name('registerUser');
 });

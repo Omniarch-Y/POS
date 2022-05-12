@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Stock;
 use App\Models\Category;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -44,11 +45,6 @@ class UserController extends Controller
             ]);
     }
 
-    public function viewPass(){
-
-        return view('Templates.changePassword');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -68,38 +64,31 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' =>'required',
-            'email'=>'required',
+            'name' =>['required', 'string', 'max:255'],
+            'email'=>['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone_number'=>'required',
-            'image'=>'required|mimes:jpg,png,jpeg,svg,gif',
+            'phone_number'=>['required', 'max:14'],
+            'avatar'=>'required|mimes:jpg,png,jpeg,svg,gif',
+            'role'=>'required'
              
         ]);
 
         //image storing logic
-        $image = $request->file('image');
-        $imageName= $image->getClientOriginalName();
-        $image->storeAs('public\userImages',time().$imageName);
+        $avatar = $request->file('avatar');
+        $avatarName= $avatar->getClientOriginalName();
+        $avatar->storeAs('public\userImages',time().$avatarName);
         
-        //checking if the item already exists in the stock 
-        // $userExists= User::where('name',$request->name)->where('category_id',$request->category)->first();
-        // if($userExists){
-        //    $newAmount= $itemExists->total_amount + $request->total_amount;
-        //    Stock::where('name',$request->name)->where('category_id',$request->category)->update(['total_amount' => $newAmount]);
-        //    return redirect()->back()->with('success','Item amount updated successfully');
-        // }
-        // else{
-               //creating a new item
-        $newItem= new User();
-        $newItem->name = $request->name;
-        $newItem->email = $request->email;
-        $newItem->password = $request->password;
-        $newItem->phone_number = $request->phone_number;
-        $newItem->image = time().$imageName;
-        $newItem->save();
+        //creating a new user
+        $newUser= new User();
+        $newUser->name = $request->name;
+        $newUser->email = $request->email;
+        $newUser->password = Hash::make($request->password);
+        $newUser->phone_number = $request->phone_number;
+        $newUser->role = $request->role;
+        $newUser->avatar = time().$avatarName;
+        $newUser->save();
         return redirect()->back()->with('success','User added successfully');
 
-        // }
     }
 
     /**
@@ -125,13 +114,33 @@ class UserController extends Controller
         return view('Templates.editUser',compact('user'));
     }
 
-    public function editPassword()
+    public function updatePassword(Request $request)
     {
-        $users = User::find($auth()->user()->id);
-        // $users->password = $request->input('password');
-        $input = $request->password;
-        $users->update($input);
-        return redirect('/collection')->with('message', 'stock updated');
+        $this->validate($request,[
+            'old_password' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+
+        $old_password = $request->old_password;
+        // dd(auth()->user()->password);
+        $users = User::find(auth()->user()->id);
+        if (Hash::check($old_password, $users->password)){
+            //     $input = $request->input('password');
+            // $users->update($input);
+            return redirect('/home')->with('message', 'user password updated');
+        }else{
+            return redirect('/collection')->with('message', 'user password updated');
+        }
+        // // $users->password = $request->input('password');
+        // if($old_password !== $users->password){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       c
+        //     return redirect('/collection')->with('message', 'error');
+        // }else{
+
+        //     $input = $request->password;
+        //     $users->update(Hash::make($input));
+        //     return redirect('/home')->with('message', 'user password updated');
+        // }
+        
     }
 
     /**
