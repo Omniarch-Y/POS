@@ -38,8 +38,11 @@
                      </th>
                      <th scope="col">Price</th>
                      <th scope="col">Stock amount</th>
+                     @if (auth()->user()->role == 'casher')
                      <th scope="col">Amount</th>
                      <th scope="col">Add to cart</th>
+                     @endif
+              
                   </tr>
                </thead>
                <tbody>
@@ -61,7 +64,10 @@
                    <td class="text-danger"><strong>Item run-out of stock</strong></td>
                      @endif
                      @if ($stock->total_amount>0)
-                             <td>
+                            
+                     @if (auth()->user()->role=='casher')
+                         <td>
+
                         <div>
                            <a class="btn dec" type="submit" ><i class="bi fs-5 bi-dash-circle-fill"></i></a>
                            <input type="number" class="text-center" id="amountX" name="amount" value='0' readonly/>
@@ -75,6 +81,8 @@
                     <td>
                        <button type="submit" class="btn btn-primary mx-auto my-1"><i class="bi bi-cart-plus-fill fs-5" aria-hidden="true" ></i></button>
                     </td>
+                     @endif
+                    
                      @endif
                 
                     </form>
