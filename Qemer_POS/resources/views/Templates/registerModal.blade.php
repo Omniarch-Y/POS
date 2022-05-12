@@ -71,7 +71,7 @@
                                             <option value="admin" selected>Admin</option>
                                             <option value="casher" selected>Casher</option>       
                                           
-                                            <option value="Select Role" disabled selected>Click to Select Category</option>       
+                                            <option value="Select Role" disabled selected>Click to Select Role</option>       
                                         </select>
         
                                         @error('role')
