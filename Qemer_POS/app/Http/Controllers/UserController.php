@@ -33,8 +33,6 @@ class UserController extends Controller
             $vat=$cash*0.15;
             $vatIncluded=$vat+$cash;
             $value= number_format( $vatIncluded, 2, '.', '');
-        
-            // $cashOut=$cash->sum();
 
             return view('users', [
                 'stocks' => $stocks,
@@ -150,9 +148,27 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $users = User::find($id);
-        $input = $request->all();
-        $users->update($input);
-        return redirect('/viewUsers')->with('message', 'user updated');
+
+            if($request->avatar==null){
+                $users->avatar= $users->avatar;
+            }else {
+                $avatar = $request->file('avatar');
+                $avatarName= $avatar->getClientOriginalName();
+                $avatar->storeAs('public\userImages',time().$avatarName);
+
+                $users->avatar= time().$avatarName;
+            }
+            if($request->role==null){
+                $users->role= $users->role;
+            }
+            else{
+                $users->role= $request->role;
+            }
+            $users->name= $request->name;
+            $users->email= $request->email;
+            $users->phone_number = $request->phone_number;
+            $users->save();
+            return redirect('/viewUsers')->with('message', 'users updated');
     }
 
     /**

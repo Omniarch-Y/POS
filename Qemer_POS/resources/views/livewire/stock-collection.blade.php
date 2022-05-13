@@ -1,5 +1,4 @@
 
-
 {{-- start of item list container --}}
 <div class="container">
    <div class="container">
@@ -93,7 +92,6 @@
                   <td class="text-warning"> <strong>{{$stock->total_amount}}</strong> </td>
                      @endif
                      @if ($stock->total_amount<=0)
-                   {{-- <td class="text-danger"><strong>{{$stock->total_amount}}</strong> </td> --}}
                    <td class="text-danger"><strong>Item run-out of stock</strong></td>
                      @endif
                      <td>{{$stock->category_name}}</td>

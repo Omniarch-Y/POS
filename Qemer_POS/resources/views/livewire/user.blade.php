@@ -1,5 +1,4 @@
 
-
 {{-- start of item list container --}}
 <div class="container">
     <div class="container">
@@ -44,8 +43,6 @@
     });
  </script>
  
-  
-     
      <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
    
              <table class="table table-responsive table-hover table-light my-5">
