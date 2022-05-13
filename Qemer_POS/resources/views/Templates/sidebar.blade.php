@@ -24,48 +24,51 @@
             </a>
             <span class="tooltip">User</span>
         </li>
-        @extends('Templates.userModal')
-        <li>
-            <a href="#">
-                <i data-bs-toggle="modal" data-bs-target="#addCategory" class="bi bi-cart-fill fs-5" aria-hidden="true" ></i>
-                <span class="links_name">Cart</span>
-            </a>
-            <span class="tooltip">Cart</span>
-        </li>
-@if (auth()->user()->role=='admin')
+        @extends('Templates.Modals.userProfile')
+
+        @if (auth()->user()->role=='casher')
+            <li>
+                <a href="#">
+                    <i data-bs-toggle="modal" data-bs-target="#cartDisplay" class="bi bi-cart-fill fs-5" aria-hidden="true" ></i>
+                    <span class="links_name">Cart</span>
+                </a>
+                <span class="tooltip">Cart</span>
+            </li>
+        @endif
+
+        @if (auth()->user()->role=='admin')
     
+            <li>
+                <a href="/dailyReport">
+                    <i class="bi bi-file-earmark-text-fill fs-5" aria-hidden="true" ></i>
+                    <span class="links_name">Daily Report</span>
+                </a>
+                <span class="tooltip">Daily Report</span>
+            </li>
 
-        <li>
-            <a href="/dailyReport">
-                <i class="bi bi-file-earmark-text-fill fs-5" aria-hidden="true" ></i>
-                <span class="links_name">Daily Report</span>
-            </a>
-            <span class="tooltip">Daily Report</span>
-        </li>
+            <li>
+                <a href="/receiptList">
+                    <i   class="bi bi-receipt fs-5" aria-hidden="true" ></i>
+                    <span class="links_name">Receipt list</span>
+                </a>
+                <span class="tooltip">Receipt list</span>
+            </li>
 
-        <li>
-            <a href="/receiptList">
-                <i   class="bi bi-receipt fs-5" aria-hidden="true" ></i>
-                <span class="links_name">Receipt list</span>
-            </a>
-            <span class="tooltip">Receipt list</span>
-        </li>
+            {{-- <li>
+                <a href="/collection">
+                    <i class="bi bi-basket2-fill fs-5" aria-hidden="true" ></i>
+                    <span class="links_name">Stock</span>
+                </a>
+                <span class="tooltip">Stock</span>
+            </li> --}}
 
-        <li>
-            <a href="/collection">
-                <i class="bi bi-basket2-fill fs-5" aria-hidden="true" ></i>
-                <span class="links_name">Stock</span>
-            </a>
-            <span class="tooltip">Stock</span>
-        </li>
-
-        <li>
-            <a href="/viewUsers">
-                <i class="bi bi-people-fill fs-5" aria-hidden="true" ></i>
-                <span class="links_name">Users</span>
-            </a>
-            <span class="tooltip">Users</span>
-        </li>
+            <li>
+                <a href="/viewUsers">
+                    <i class="bi bi-people-fill fs-5" aria-hidden="true" ></i>
+                    <span class="links_name">Users</span>
+                </a>
+                <span class="tooltip">Users</span>
+            </li>
         @endif
     </ul>
 
@@ -85,6 +88,7 @@
         </div>
     </div>
 </div>
+
 <script>
 
   let btn = document.querySelector('#btn');

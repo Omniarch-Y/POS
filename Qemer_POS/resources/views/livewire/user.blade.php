@@ -29,7 +29,7 @@
     </div>
     </div>
  
-    @extends('Templates.registerModal')
+    @extends('Templates.Modals.registerUser')
  
  <script>
     var modelId = document.getElementById('modelId');

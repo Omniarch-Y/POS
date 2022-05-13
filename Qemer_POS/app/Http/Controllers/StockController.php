@@ -26,20 +26,28 @@ class stockController extends Controller
         $vat=$cash*0.15;
         $vatIncluded=$vat+$cash;
         $value= number_format( $vatIncluded, 2, '.', '');
-       
-        // $cashOut=$cash->sum();
+        
 
-        return view('home', [
-            'stocks' => $stocks,
-            'categories' => $category,
-            'informations'=>$cartItems,
-            'totalItemPrice' => $value,
-            'cartTotal'=>$cartTotal,
-        ]);
+        if (auth()->user()->role == 'casher'){
+            return view('home', [
+                'stocks' => $stocks,
+                'categories' => $category,
+                'informations'=>$cartItems,
+                'totalItemPrice' => $value,
+                'cartTotal'=>$cartTotal,
+            ]);
+        }
+        else{
+            return view('viewCollection', [
+                // 'stocks' => $stocks,
+                // 'categories' => $category,
+                'informations'=>$cartItems,
+                'totalItemPrice' => $value,
+                // 'cartTotal'=>$cartTotal,
+            ]);
+        }
         
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -91,9 +99,6 @@ class stockController extends Controller
         return redirect()->back()->with('success','Item added successfully');
 
         }
-     
-
-        
     }
 
     /**
@@ -158,8 +163,6 @@ class stockController extends Controller
              
         return redirect('/collection')->with('message', 'stock updated');
         }
-      
-       
     }
 
     /**
@@ -194,10 +197,11 @@ class stockController extends Controller
                 'totalItemPrice' => $value,
                  'cartTotal'=>$cartTotal
             ]);
-    }
+        }
     
         return redirect()->back()->with('error', 'Sorry there is no product added to this category yet');
-}
+    }
+
     public function display(){
             $stocks = Stock::inRandomOrder()->paginate(6);
             $category = Category::inRandomOrder()->paginate(5);
