@@ -70,7 +70,7 @@ class UserController extends Controller
             'role'=>'required'
              
         ]);
-
+        
         //image storing logic
         $avatar = $request->file('avatar');
         $avatarName= $avatar->getClientOriginalName();
@@ -116,12 +116,12 @@ class UserController extends Controller
     {
         if (!(Hash::check($request->old_password, auth()->user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error","Your current password does not matches with the password.");
+            return redirect()->back()->with("error","The old password you provided is incorrect");
         }
 
         if(strcmp($request->old_password, $request->password) == 0){
             // Current password and new password are the same
-            return redirect()->back()->with("error","New Password cannot be same as your current password.");
+            return redirect()->back()->with("error","New Password cannot be the same as the old password.");
         }
 
         $request->validate([
