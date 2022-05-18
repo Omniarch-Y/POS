@@ -14,7 +14,12 @@ class StockCollection extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $search = '';
+    public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public $category_name;
 

@@ -16,26 +16,18 @@ class Stock extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $searchTerm = '';
+    public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public $category_name;
 
     public $sortColumnName = 'asc';
 
     public $sortDirection = 'desc';
-
-    public function updatedSearch()
-    {
-        $this->page = 1;
-    }
-
-    public function updatingSearchInput(): void
-
-    {
-
-        $this->gotoPage(1);
-
-    }
 
     public function sortBy($columnName){
 
@@ -58,11 +50,11 @@ class Stock extends Component
 
     {
 
-        $searchTerm = '%'.$this->searchTerm.'%';
+        $search = '%'.$this->search.'%';
         
-        $stocks = Stocks::where('stocks.name' ,'like' ,$searchTerm)
+        $stocks = Stocks::where('stocks.name' ,'like' ,$search)
                                 ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
-                                ->orWhere('categories.category_name', 'like', $searchTerm)
+                                ->orWhere('categories.category_name', 'like', $search)
                                 // ->orderBy($this->sortColumnName, $this->sortDirection)           
                                 ->paginate(5);
 

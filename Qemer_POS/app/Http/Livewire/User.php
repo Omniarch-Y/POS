@@ -13,7 +13,12 @@ class User extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $search = '';
+    public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
@@ -28,8 +33,4 @@ class User extends Component
         else return redirect()->back()->with('error', 'no search result');
     }
 
-    public function updatingSearchInput()
-    {
-        $this->gotoPage(1);
-    }
 }

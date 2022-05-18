@@ -4,7 +4,7 @@
 <div class="container"> 
 <center><div class="row mx-auto justify-content-center align-items-center ">
    <center> <div class="container col-md-6">
-       <input type="text"  class="form-control" placeholder="Search..." wire:model="searchTerm" style="margin-top:2rem;"/>
+       <input type="text"  class="form-control" placeholder="Search..." wire:model="search" style="margin-top:2rem;"/>
     </div>
    </center>
     <div class=" mx-0 px-0 row justify-content-center align-items-center">
