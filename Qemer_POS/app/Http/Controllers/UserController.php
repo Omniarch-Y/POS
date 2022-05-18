@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -182,5 +182,10 @@ class UserController extends Controller
         $users = User::find($id);
         $users->delete();
         return redirect('/viewUsers')->with('message','user deleted');
+    }
+
+    public function hiddenRegisterUser()
+    {
+        return view('auth.register');
     }
 }
