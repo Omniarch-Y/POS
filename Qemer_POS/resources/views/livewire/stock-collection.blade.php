@@ -1,10 +1,9 @@
 
-
 {{-- start of item list container --}}
 <div class="container">
    <div class="container">
       <div class="row">
-         <div class=" col-md-6">
+         <div class="col-md-6">
          <strong>    
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -29,7 +28,25 @@
      
     </div>
    </div>
+  
    </div>
+   {{-- <center class="mt-2">
+      <div class="row mx-auto justify-content-center align-items-center">
+      <div class=" mx-0 px-0 row justify-content-center align-items-center">
+          <div class="col-md-4">
+            <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search"/>
+          </div>
+  
+      <div class="col-md-1">
+         <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItem" style="width:10rem">Add new Item</button>
+      </div>
+  
+      <div class="col-md-1">
+         <button class="btn btn-outline-primary solo" data-bs-toggle="modal" data-bs-target="#addCategorys" style="width:10rem;">Add new Category</button>
+      </div>
+      </div>
+      </div>
+  </center> --}}
     @extends('Templates.Modals.addNewItem')
     @extends('Templates.Modals.addCategories')
 
@@ -93,7 +110,6 @@
                   <td class="text-warning"> <strong>{{$stock->total_amount}}</strong> </td>
                      @endif
                      @if ($stock->total_amount<=0)
-                   {{-- <td class="text-danger"><strong>{{$stock->total_amount}}</strong> </td> --}}
                    <td class="text-danger"><strong>Item run-out of stock</strong></td>
                      @endif
                      <td>{{$stock->category_name}}</td>

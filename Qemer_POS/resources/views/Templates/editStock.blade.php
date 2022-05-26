@@ -14,7 +14,7 @@
             </strong>
 
            <div class="card mt-4" style="background-color:rgb(231, 231, 231);">
-                {{-- <div class="card-header text-white text-center justify-content-center align-items-center  "style="background-color:orange;">{{ __('Stock maintaining form') }}</div> --}}
+               
                 <div class="card-body">
                     <form method="POST" action="{{ url('updateItem/'.$stock->id) }} " enctype="multipart/form-data">
                         @csrf

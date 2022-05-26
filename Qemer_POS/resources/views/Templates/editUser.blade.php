@@ -55,7 +55,7 @@
 
                                          <option value="admin" selected>Admin</option>
                                          <option value="casher" selected>Casher</option>      
-                                         <option value="Select Role" disabled selected>Click to Select Category</option>       
+                                         <option value="Select Role" disabled selected>Click to Select Role</option>       
                                      </select>
                                 </div>
                        </div>
@@ -63,7 +63,7 @@
                         <div class="form-group row py-3">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
                             <div class="col-md-6">
-                          <input name="avatar"   type="file" class="form-control" value={{$user->avatar}} required>
+                          <input name="avatar"   type="file" class="form-control" value={{$user->avatar}}>
                                 @error('avatar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -33,8 +33,6 @@ class UserController extends Controller
             $vat=$cash*0.15;
             $vatIncluded=$vat+$cash;
             $value= number_format( $vatIncluded, 2, '.', '');
-        
-            // $cashOut=$cash->sum();
 
             return view('users', [
                 'stocks' => $stocks,
@@ -72,7 +70,7 @@ class UserController extends Controller
             'role'=>'required'
              
         ]);
-
+        
         //image storing logic
         $avatar = $request->file('avatar');
         $avatarName= $avatar->getClientOriginalName();
@@ -118,12 +116,12 @@ class UserController extends Controller
     {
         if (!(Hash::check($request->old_password, auth()->user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error","Your current password does not matches with the password.");
+            return redirect()->back()->with("error","The old password you provided is incorrect");
         }
 
         if(strcmp($request->old_password, $request->password) == 0){
             // Current password and new password are the same
-            return redirect()->back()->with("error","New Password cannot be same as your current password.");
+            return redirect()->back()->with("error","New Password cannot be the same as the old password.");
         }
 
         $request->validate([
@@ -150,9 +148,27 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $users = User::find($id);
-        $input = $request->all();
-        $users->update($input);
-        return redirect('/viewUsers')->with('message', 'user updated');
+
+            if($request->avatar==null){
+                $users->avatar= $users->avatar;
+            }else {
+                $avatar = $request->file('avatar');
+                $avatarName= $avatar->getClientOriginalName();
+                $avatar->storeAs('public\userImages',time().$avatarName);
+
+                $users->avatar= time().$avatarName;
+            }
+            if($request->role==null){
+                $users->role= $users->role;
+            }
+            else{
+                $users->role= $request->role;
+            }
+            $users->name= $request->name;
+            $users->email= $request->email;
+            $users->phone_number = $request->phone_number;
+            $users->save();
+            return redirect('/viewUsers')->with('message', 'users updated');
     }
 
     /**
@@ -166,5 +182,10 @@ class UserController extends Controller
         $users = User::find($id);
         $users->delete();
         return redirect('/viewUsers')->with('message','user deleted');
+    }
+
+    public function hiddenRegisterUser()
+    {
+        return view('auth.register');
     }
 }

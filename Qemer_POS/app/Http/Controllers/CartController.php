@@ -89,11 +89,17 @@ class CartController extends Controller
            'amount'=>'required',
         ]);
 
+        $itemExists=Stock::where('id',$request->stock_id)->first();
+
         $num = $request->amount;
 
         if ($num < 1){
             return redirect()->back()->with('error',"Can't add to cart with 0 amount"); 
-        }else{
+        }
+        else if($itemExists->total_amount < $request->amount){
+            return redirect()->back()->with('error',"Requested amount is not available in the stock");
+        }
+        else{
         $newItem = new Cart();
         $newItem->amount = $request->amount;
         $newItem->total_price = $request->price * $request->amount;
@@ -101,11 +107,12 @@ class CartController extends Controller
         $newItem->casher_id = auth()->user()->id;
         $newItem->save();
         //decrease by x amount of quantity from stock every time you insert an item to cart
-        $itemExists=Stock::where('id',$request->stock_id)->first();
+       
         $newAmount=$itemExists->total_amount-$request->amount;
         Stock::where(['id' => $request->stock_id])->update(['total_amount' => $newAmount]);
         return redirect()->back()->with('success','Cart added successfully');
         }
+
     }
      
     public function takeBack(Request $request,$id){

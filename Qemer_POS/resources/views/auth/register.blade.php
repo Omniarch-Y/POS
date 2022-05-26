@@ -121,17 +121,17 @@
                         {{-- tab for register --}}
                         <div class="card-body tab-pane fade show active" id="register" role="tabpanel"
                             aria-labelledby="register-tab">
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('registerUser') }}" enctype="multipart/form-data">
                                 @csrf
-       
-                                <div class="form-group row py-3">
+
+                                <div class="row mb-3">
                                     <label for="name"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                            value="{{ old('name') }}" placeholder="{{ __('Enter name')}}" required autocomplete="name" autofocus>
 
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -141,14 +141,14 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row py-3">
+                                <div class="row mb-3">
                                     <label for="email"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required autocomplete="email">
+                                            value="{{ old('email') }}" placeholder="{{ __('Enter email')}}" required autocomplete="email">
 
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -165,7 +165,7 @@
                                     <div class="col-md-6">
                                         <input id="phone_number" type="number"
                                             class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
-                                            value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
+                                            value="{{ old('phone_number') }}" placeholder="{{ __('Enter phone number') }}" required autocomplete="phone_number" autofocus>
 
                                         @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
@@ -184,10 +184,22 @@
                                             <option value="admin" selected>Admin</option>
                                             <option value="casher" selected>Casher</option>       
                                           
-                                            <option value="Select Role" disabled selected></option>       
+                                            <option value="Select Role" disabled selected>Click to Select Role</option>       
                                         </select>
         
                                         @error('role')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="avatar"  class="col-md-4 col-form-label text-md-end">{{ __('Avatar') }}</label>
+                                    <div class="col-md-6">
+                                  <input name="avatar"   type="file" class="form-control" required >
+                                        @error('avatar')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -202,7 +214,7 @@
                                     <div class="col-md-6">
                                         <input id="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror"
-                                            name="password" required autocomplete="new-password">
+                                            name="password" placeholder="{{ __('Enter password')}}" required autocomplete="new-password">
 
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -218,18 +230,18 @@
 
                                     <div class="col-md-6">
                                         <input id="password-confirm" type="password" class="form-control"
-                                            name="password_confirmation" required autocomplete="new-password">
+                                            name="password_confirmation"placeholder="{{ __('Confirm password')}}" required autocomplete="new-password">
                                     </div>
-                                </div>
-
-                                <div class="row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Register') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                                </div>                   
+              
+                     </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             <button type="submit" class="btn btn-primary ">
+                {{ __('Register') }}
+            </button>
+          </div>
+       </form>
                         </div>
                     </div>
                 </div>

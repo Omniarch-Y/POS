@@ -134,35 +134,30 @@ class stockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //add image logic
         $stocks = Stock::find($id);
 
-       
-        if($request->category_id!==null && $request->image!==null){
-            $image = $request->file('image');
-            $imageName= $image->getClientOriginalName();
-            $image->storeAs('public\itemImages',time().$imageName);
-    
-
-            $stocks->name= $request->name;
-            $stocks->total_amount= $request->total_amount;
-            $stocks->price= $request->price;
-            $stocks->image= time().$imageName;
-            $stocks->category_id = $request->category_id;
-            $stocks->save();
-            return redirect('/collection')->with('message', 'stock updated');
-        }
-        else{
-
-            $stocks->name= $request->name;
-            $stocks->total_amount= $request->total_amount;
-            $stocks->price= $request->price;
-            $stocks->image= $stocks->image;
+        if($request->category_id==null){
             $stocks->category_id = $stocks->category_id;
-            $stocks->save();
-             
-        return redirect('/collection')->with('message', 'stock updated');
+        }else{
+            $stocks->category_id = $request->category_id;
         }
+
+        if($request->image==null){
+            $stocks->image = $stocks->image;
+        }else{
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->storeAs('public\itemImages',time().$imageName);
+
+            $stocks->image = time().$imageName;
+        }
+            $stocks->name= $request->name;
+            $stocks->total_amount= $request->total_amount;
+            $stocks->price= $request->price;
+            $stocks->save();
+
+        return redirect('/collection')->with('message','stock updated successfully');
+  
     }
 
     /**

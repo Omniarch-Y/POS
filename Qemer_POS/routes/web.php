@@ -70,4 +70,5 @@ Route::controller(UserController::class)->group( function (){
     Route::delete('deleteUser/{id}','destroy');
     Route::post('updatePass','updatePassword')->name('updatePass');
     Route::post('registerUser','store')->name('registerUser');
+    Route::get('call_registerUser','hiddenRegisterUser');
 });
