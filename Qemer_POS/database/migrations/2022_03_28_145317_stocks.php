@@ -20,9 +20,10 @@ $table->string('total_amount');
 $table->string('price');
 $table->string('image');
 $table->unsignedBigInteger('category_id');
+$table->unsignedBigInteger('district_id');
+$table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
 $table->foreign('category_id')->references('c_id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
 $table->timestamps();
-
 });
 }
 
