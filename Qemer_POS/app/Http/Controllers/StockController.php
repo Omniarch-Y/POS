@@ -136,7 +136,7 @@ class stockController extends Controller
     {
         $stocks = Stock::find($id);
 
-        if($request->category_id==null){
+        if($request->category_id == null){
             $stocks->category_id = $stocks->category_id;
         }else{
             $stocks->category_id = $request->category_id;
@@ -148,7 +148,6 @@ class stockController extends Controller
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
             $image->storeAs('public\itemImages',time().$imageName);
-
             $stocks->image = time().$imageName;
         }
             $stocks->name= $request->name;
@@ -156,7 +155,7 @@ class stockController extends Controller
             $stocks->price= $request->price;
             $stocks->save();
 
-        return redirect('/collection')->with('message','stock updated successfully');
+        return redirect('/collection')->with('success','stock updated successfully');
   
     }
 
@@ -170,7 +169,7 @@ class stockController extends Controller
     {   
         $stocks = Stock::find($id);
         $stocks->delete();
-        return redirect('/collection')->with('message','stock deleted');
+        return redirect()->back()->with('success','stock deleted');
     }
 
     public function sortItems($id){

@@ -49,7 +49,7 @@
                         </div>
    
                         <div class="form-group row mb-3">    
-                        <label for="Catagory" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+                            <label for="Catagory" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
                                 <div class="col-md-6  ">
                                      <select class="form-control" id="role" name="category_id" required focus>
                                          @foreach ($categories as $category)       
@@ -63,7 +63,7 @@
                         <div class="form-group row py-3">
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>
                             <div class="col-md-6">
-                          <input name="image"   type="file" class="form-control" value={{$stock->image}}>
+                                <input name="image"   type="file" class="form-control" value={{$stock->image}}>
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

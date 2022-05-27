@@ -1,13 +1,34 @@
 
-
 {{-- start of item list container --}}
-<div class="container"> 
-<center><div class="row mx-auto justify-content-center align-items-center ">
+<div class="container">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6">
+         <strong>    
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <h4>{{ $message }}</h4>
+                </div>
+               @endif     
+        </strong>
+
+        <strong>    
+                @if ($message = Session::get('error'))
+                <div class="alert alert-danger">
+                    <h4>{{ $message }}</h4>
+                </div>
+               @endif     
+        </strong>
+    </div>
+   </div>
+   </div> 
+  <center>
+   <div class="row mx-auto justify-content-center align-items-center ">
    <center> <div class="container col-md-6">
        <input type="text"  class="form-control" placeholder="Search..." wire:model="search" style="margin-top:2rem;"/>
     </div>
    </center>
-    <div class=" mx-0 px-0 row justify-content-center align-items-center">
+    <div class="mx-0 px-0 row justify-content-center align-items-center">
        <div class="col-md-2" style="margin-top:1rem;">
        <div class="bg-success" style="width:10px;height:10px"> </div>
        <p>Enough items available</p>
@@ -23,7 +44,8 @@
        <p>Item run out!!</p>
       </div>
     </div>
-    </div></center>
+    </div>
+   </center>
     <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
   
             <table class="table table-responsive table-hover table-light my-5">

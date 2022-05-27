@@ -168,7 +168,7 @@ class UserController extends Controller
             $users->email= $request->email;
             $users->phone_number = $request->phone_number;
             $users->save();
-            return redirect('/viewUsers')->with('message', 'users updated');
+            return redirect('/viewUsers')->with('success', 'users updated successfully');
     }
 
     /**
@@ -179,13 +179,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {   
-        $users = User::find($id);
-        $users->delete();
-        return redirect('/viewUsers')->with('message','user deleted');
+        if ($id == auth()->user()->id) {
+            return redirect()->back()->with('error','Access denied');
+        }else{
+            $users = User::find($id);
+            $users->delete();
+            return redirect()->back()->with('success','User deleted successfully');
+        }
     }
 
     public function hiddenRegisterUser()
     {
         return view('auth.register');
     }
+    
 }

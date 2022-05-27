@@ -3,7 +3,7 @@
 <div class="container">
     <div class="container">
        <div class="row">
-          <div class=" col-md-6">
+          <div class="col-md-6">
           <strong>    
                  @if ($message = Session::get('success'))
                  <div class="alert alert-success">
@@ -30,7 +30,7 @@
  
     @extends('Templates.Modals.registerUser')
  
- <script>
+ {{-- <script>
     var modelId = document.getElementById('modelId');
  
     modelId.addEventListener('show.bs.modal', function (event) {
@@ -41,11 +41,11 @@
  
        // Use above variables to manipulate the DOM
     });
- </script>
+ </script> --}}
  
      <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
    
-             <table class="table table-responsive table-hover table-light my-5">
+             <table class="table table-responsive table-hover my-5">
                 <thead>
                    <tr>
                       <th scope="col">Name</th>
@@ -83,7 +83,7 @@
              </table>
           </div>
  
-   <div class="container " style="margin-top:5rem">
+   <div class="container" style="margin-top:5rem">
       <div class="d-flex justify-content-center align-items-center ">
           <h5>{{ $users->links() }}</h5>
       </div>

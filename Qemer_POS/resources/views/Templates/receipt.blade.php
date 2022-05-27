@@ -1,4 +1,3 @@
-
    
     <div class="home_content" style="float:right; padding-right:-100rem !important;">
       <div class="container">

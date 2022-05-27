@@ -94,7 +94,7 @@ body{
         font-weight: 400;
     }
 
-    .sidebar #btn {
+    .sidebar #btn_toggler {
         position: absolute;
         color: #fff;
         left: 50%;
@@ -107,7 +107,7 @@ body{
         transform: translateX(-50%);
     }
 
-    .sidebar.active #btn{
+    .sidebar.active #btn_toggler{
         left: 90%;
     }
 
@@ -344,7 +344,7 @@ body{
         font-weight: 400;
     }
     
-    .sidebar #btn {
+    .sidebar #btn_toggler {
         position: absolute;
         color: #fff;
         left: 50%;
@@ -530,6 +530,15 @@ body{
     }
 
   }
+/*  style for stock collection, users list and list items */
+  .style{
+    float:right;
+    padding-right:-100rem !important;
+  }
+  .style .container{
+    margin-top:1rem;
+  }
+/* end of style for stock stock collection, users list and list items*/ 
   
 .warning{
       color: #fff;

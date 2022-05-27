@@ -88,9 +88,4 @@
 
 </form>
 
-<script>
-  function printFunction() {
-    window.print();
-  }
-</script>
 @endsection

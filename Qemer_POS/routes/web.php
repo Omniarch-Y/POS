@@ -41,9 +41,9 @@ Route::controller(StockController::class)->middleware('isAdmin')->group( functio
 
 Route::controller(CartController::class)->group(function(){
     Route::post('storeCart','store')->middleware('isCasher');
-    Route::post('receipt','index')->middleware('isCasher');;
-    Route::get('dailyReport','listReport')->middleware('isAdmin');;
-    Route::get('anyReport','anyReport')->middleware('isAdmin');;
+    Route::post('receipt','index')->middleware('isCasher');
+    Route::get('dailyReport','listReport')->middleware('isAdmin');
+    Route::get('anyReport','anyReport')->middleware('isAdmin');
     Route::post('changeStatus','changeStatus');
     Route::get('returnToStock/{id}','takeBack');
 
@@ -62,12 +62,12 @@ Route::controller(CategoryController::class)->middleware('isAdmin')->group( func
 });
 
 Route::controller(UserController::class)->group( function (){
-    Route::get('viewUsers','index');
-    Route::get('editView','editView');
-    Route::get('editUser/{id}','edit');
-    Route::put('updateUser/{id}','update');
-    Route::delete('deleteUser/{id}','destroy');
-    Route::post('updatePass','updatePassword')->name('updatePass');
+    Route::get('viewUsers','index')->middleware('isAdmin');
+    Route::get('editView','editView')->middleware('isAdmin');
+    Route::get('editUser/{id}','edit')->middleware('isAdmin');
+    Route::put('updateUser/{id}','update')->middleware('isAdmin');
+    Route::delete('deleteUser/{id}','destroy')->middleware('isAdmin');
+    Route::post('updatePass','updatePassword')->name('updatePass')->middleware('auth');
     Route::post('registerUser','store')->name('registerUser');
     Route::get('call_registerUser','hiddenRegisterUser');
 });

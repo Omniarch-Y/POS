@@ -73,8 +73,6 @@
   <div class="text-center">THANK YOU</div>
   <div class="text-center">HAVE A NICE DAY</div>
 </div>
- 
-
 </form>
  
 @endsection

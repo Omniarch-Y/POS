@@ -5,7 +5,7 @@
             <i class="bi bi-lightning-charge-fill" aria-hidden="true"></i>
             <div class="logo_name">Qemer pos</div>
         </div>
-        <i class="bi bi-list fs-1" aria-hidden="true" id="btn"></i>
+        <i class="bi bi-list fs-1" aria-hidden="true" id="btn_toggler"></i>
     </div>
     <ul class="nav_list">
 
@@ -18,8 +18,8 @@
         </li>
 
         <li>
-            <a href="#">
-                <i data-bs-toggle="modal" data-bs-target="#userModal" class="bi bi-person-fill fs-5" aria-hidden="true"></i>
+            <a href="" data-bs-toggle="modal" data-bs-target="#userModal">
+                <i class="bi bi-person-fill fs-5" aria-hidden="true"></i>
                 <span class="links_name">User</span>
             </a>
             <span class="tooltip">User</span>
@@ -28,8 +28,8 @@
 
         @if (auth()->user()->role=='casher')
             <li>
-                <a href="#">
-                    <i data-bs-toggle="modal" data-bs-target="#cartDisplay" class="bi bi-cart-fill fs-5" aria-hidden="true" ></i>
+                <a href="" data-bs-toggle="modal" data-bs-target="#cartDisplay" >
+                    <i class="bi bi-cart-fill fs-5" aria-hidden="true" ></i>
                     <span class="links_name">Cart</span>
                 </a>
                 <span class="tooltip">Cart</span>
@@ -53,14 +53,6 @@
                 </a>
                 <span class="tooltip">Receipt list</span>
             </li>
-
-            {{-- <li>
-                <a href="/collection">
-                    <i class="bi bi-basket2-fill fs-5" aria-hidden="true" ></i>
-                    <span class="links_name">Stock</span>
-                </a>
-                <span class="tooltip">Stock</span>
-            </li> --}}
 
             <li>
                 <a href="/viewUsers">
@@ -88,21 +80,5 @@
         </div>
     </div>
 </div>
-
-<script>
-
-  let btn = document.querySelector('#btn');
-  let sidebar = document.querySelector('.sidebar');
-  let searchBtn = document.querySelector('.bi-search');
-
-  btn.onclick = function() {
-     sidebar.classList.toggle("active");
-  }
-
-  searchBtn.onclick = function() {
-     sidebar.classList.toggle("active");
-  }
-
-</script>
    
    {{-- end of sidebar --}} 

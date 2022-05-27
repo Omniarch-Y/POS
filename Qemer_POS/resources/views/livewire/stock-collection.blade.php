@@ -7,7 +7,7 @@
          <strong>    
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
-                    <h1>{{ $message }}</h1>
+                    <h4>{{ $message }}</h4>
                 </div>
                @endif     
         </strong>
@@ -15,7 +15,7 @@
         <strong>    
                 @if ($message = Session::get('error'))
                 <div class="alert alert-danger">
-                    <h1>{{ $message }}</h1>
+                    <h4>{{ $message }}</h4>
                 </div>
                @endif     
         </strong>
@@ -51,7 +51,7 @@
     @extends('Templates.Modals.addCategories')
 
 
-<script>
+{{-- <script>
    var modelId = document.getElementById('modelId');
 
    modelId.addEventListener('show.bs.modal', function (event) {
@@ -62,7 +62,7 @@
 
       // Use above variables to manipulate the DOM
    });
-</script>
+</script> --}}
 
     <center class="mt-2">
         <div class="row mx-auto justify-content-center align-items-center ">
@@ -87,7 +87,7 @@
     
     <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
   
-            <table class="table table-responsive table-hover table-light my-5">
+            <table class="table table-responsive table-hover my-5">
                <thead>
                   <tr>
                      <th scope="col">Name</th>

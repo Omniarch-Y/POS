@@ -1,5 +1,4 @@
 
-   
     <div class="home_content" style="float:right; padding-right:-100rem !important;">
       <div class="container">
     <center> 
@@ -23,7 +22,7 @@
           </form>
      </div>
      {{-- end of search-bar --}}
-    <table class="table table-responsive" style="margin-top:4rem">
+    <table class="table table-responsive table-hover" style="margin-top:4rem">
                   <thead class="thead-inverse|thead-default">
                      <tr>
                         <th>Item Name</th>
