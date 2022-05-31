@@ -95,6 +95,7 @@ class stockController extends Controller
         $newItem->price= $request->price;
         $newItem->image= time().$imageName;
         $newItem->category_id= $request->category;
+        $newItem->branch_id= auth()->user()->branch_id;
         $newItem->save();
         return redirect()->back()->with('success','Item added successfully');
 

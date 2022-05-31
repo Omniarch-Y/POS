@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Stock;
 use App\Models\Category;
 use App\Models\Cart;
+use App\Models\Branch;
+use App\Models\Address;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -67,10 +69,31 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone_number'=>['required', 'max:14'],
             'avatar'=>'required|mimes:jpg,png,jpeg,svg,gif',
-            'role'=>'required'
+            'role'=>'required',
+            'branch_id' =>'required',
+            'subcity'=>'required',
+            'city'=>'required',
+            'country'=>'required',
              
         ]);
+
+        $savedAddress_1 = $request->subcity;
+        $savedAddress_2 = $request->city;
+        $savedAddress_3 = $request->country;
+
+        $isAvailable = Address::where('subcity',$savedAddress_1)->where('city',$savedAddress_2)->where('country',$savedAddress_3)->first();
         
+        if($isAvailable == false){
+            // creating new address
+            $newAddress = new Address();
+            $newAddress->subcity = $request->subcity;
+            $newAddress->city = $request->city;
+            $newAddress->country = $request->country;
+            $newAddress->save();
+        }
+
+        $findAddress = Address::where('subcity',$savedAddress_1)->where('city',$savedAddress_2)->where('country',$savedAddress_3)->first();
+
         //image storing logic
         $avatar = $request->file('avatar');
         $avatarName= $avatar->getClientOriginalName();
@@ -84,6 +107,8 @@ class UserController extends Controller
         $newUser->phone_number = $request->phone_number;
         $newUser->role = $request->role;
         $newUser->avatar = time().$avatarName;
+        $newUser->address_id = $findAddress->id;
+        $newUser->branch_id = $request->branch_id;
         $newUser->save();
         return redirect()->back()->with('success','User added successfully');
 
@@ -109,7 +134,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('Templates.editUser',compact('user'));
+        $address = Address::find($user->address_id);
+        return view('Templates.editUser',compact('user','address'));
     }
 
     public function updatePassword(Request $request)
@@ -164,9 +190,28 @@ class UserController extends Controller
             else{
                 $users->role= $request->role;
             }
+            
+            $savedAddress_1 = $request->subcity;
+            $savedAddress_2 = $request->city;
+            $savedAddress_3 = $request->country;
+
+            $isAvailable = Address::where('subcity',$savedAddress_1)->where('city',$savedAddress_2)->where('country',$savedAddress_3)->first();
+        
+            if($isAvailable == false){
+                // creating new address
+                $newAddress = new Address();
+                $newAddress->subcity = $request->subcity;
+                $newAddress->city = $request->city;
+                $newAddress->country = $request->country;
+                $newAddress->save();
+            }
+            
+            $findAddress = Address::where('subcity',$savedAddress_1)->where('city',$savedAddress_2)->where('country',$savedAddress_3)->first();
+
             $users->name= $request->name;
             $users->email= $request->email;
             $users->phone_number = $request->phone_number;
+            $users->address_id = $findAddress->id;
             $users->save();
             return redirect('/viewUsers')->with('success', 'users updated successfully');
     }
@@ -190,7 +235,15 @@ class UserController extends Controller
 
     public function hiddenRegisterUser()
     {
-        return view('auth.register');
+        $branches = Branch::all();
+        $users= User::where('role','Admin')->get();
+        
+        if($users->count()>0){
+            return redirect('/');  
+        }else{
+            return view('auth.register',['branches' => $branches]);
+        }
+        
     }
     
 }

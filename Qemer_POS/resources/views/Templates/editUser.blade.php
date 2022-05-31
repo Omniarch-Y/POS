@@ -13,16 +13,20 @@
            @endif
             </strong>
 
-           <div class="card mt-4" style="background-color:rgb(231, 231, 231);">
-                <div class="card-body">
+            <div class="py-5 text-center">
+              <i class="bi bi-pencil-square fs-1 icon-green" aria-hidden="true"></i>
+            </div>
+
+           <div class="mt-3">
+
                     <form method="POST" action="{{ url('updateUser/'.$user->id) }} " enctype="multipart/form-data">
-                        @csrf
+                      @csrf
                         @method("PUT")
+                        
+                      <div class="row  g-4">
+                        <div class="col-sm-6">
+                          <label for="name" class="form-label">{{ __('Name') }}</label>
 
-                        <div class="form-group row py-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="{{ __('Enter the user name')}}" value={{$user->name}} required autocomplete="name" autofocus required>
 
                                 @error('name')
@@ -30,13 +34,23 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                           
                         </div>
+            
+                        <div class="col-sm-6">
+                            <label for="Role" class="form-label">{{ __('Role') }}</label>
 
-                        <div class="form-group row py-3">
-                            <label for="Email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                              <select class="form-control" id="role" name="role" required focus>
 
-                            <div class="col-md-6">
+                                <option value="admin" selected>Admin</option>
+                                <option value="casher" selected>Casher</option>      
+                                <option value="Select Role" disabled selected>Click to Select Role</option>       
+                             </select>
+                        </div>
+            
+                        <div class="col-12">
+                          <label for="Email" class="form-label">{{ __('Email') }}</label>
+
                                 <input id="email" placeholder="{{ __('Enter new email') }}" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value={{$user->email }} autocomplete="email" required>
 
                                 @error('email')
@@ -44,37 +58,22 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+
                         </div>
-   
-                        <div class="form-group row mb-3">    
-                        <label for="Role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-                                <div class="col-md-6  ">
-                                     <select class="form-control" id="role" name="role" required focus>
-
-                                         <option value="admin" selected>Admin</option>
-                                         <option value="casher" selected>Casher</option>      
-                                         <option value="Select Role" disabled selected>Click to Select Role</option>       
-                                     </select>
-                                </div>
-                       </div>
-
-                        <div class="form-group row py-3">
-                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
-                            <div class="col-md-6">
-                          <input name="avatar"   type="file" class="form-control" value={{$user->avatar}}>
+            
+                        <div class="col-12">
+                          <label for="avatar" class="form-label">{{ __('Avatar') }}</label>
+                          <input name="avatar" type="file" class="form-control" value={{$user->avatar}}>
                                 @error('avatar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
                         </div>
+            
+                        <div class="col-12">
+                          <label for="Phone number" class="form-label">{{ __('Phone number') }}</label>
 
-                        <div class="form-group row py-3">
-                            <label for="Phone number" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
-
-                            <div class="col-md-6">
                                 <input id="phone_number" type="number" class="form-control @error('price') is-invalid @enderror" name="phone_number" autocomplete="phone_number" placeholder="{{ __('Enter the new phone number') }}" value={{$user->phone_number}} required>
 
                                 @error('Phone number')
@@ -83,22 +82,53 @@
                                     </span>
                                 @enderror
                                 
-                            </div>
                         </div>
-                        
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4 justify-content-center text-center align-items-center my-3">
-                                <button type="submit" class="btn btn-primary ">
-                                    {{ __('Update') }}
-                                </button>
-                            </div>
-                        </div>
+
+                        <div class="col-4">
+                          <label for="subcity" class="form-label">{{ __('Subcity') }}</label>
+  
+                              <input id="subcity" type="text" class="form-control @error('subcity') is-invalid @enderror" name="subcity" placeholder="{{ __('Enter the subcity')}}" required autocomplete="name" autofocus value={{$address->subcity}} required>
+  
+                              @error('subcity')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          
+                      </div>
+          
+                      <div class="col-4">
+                          <label for="city" class="form-label">{{ __('City') }}</label>
+  
+                              <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" autocomplete="city" placeholder="{{ __('Enter the city name') }}" value={{$address->city}} required>
+  
+                              @error('city')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                              
+                      </div>
+  
+                      <div class="col-4">
+                          <label for="country" class="form-label">{{ __('Country') }}</label>
+  
+                              <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" autocomplete="country" placeholder="{{ __('Enter the country name') }}" value={{$address->country}} required>
+  
+                              @error('country')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                              
+                      </div>
+            
+                      <button class="w-100 btn btn-primary btn" type="submit">{{ __('Update') }}</button>
+                      </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection
- </div>

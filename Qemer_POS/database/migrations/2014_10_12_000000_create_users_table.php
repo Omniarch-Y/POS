@@ -15,15 +15,18 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('First_name');
+            $table->string('Last_name');
             $table->string('role')->default('admin');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number')->nullable()->unique();
             $table->string('avatar')->nullable();
-            $table->unsignedBigInteger('district')->nullable();
-            $table->foreign('district')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
             $table->string('password');
+            $table->unsignedBigInteger('address_id');
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('branch_id')->nullable();
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

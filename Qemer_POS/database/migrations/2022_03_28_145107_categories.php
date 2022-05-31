@@ -6,27 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-/**
-* Run the migrations.
-*
-* @return void
-*/
-public function up()
-{
-Schema::create('categories', function (Blueprint $table) {
-$table->id('c_id');
-$table->string('category_name')->unique();
-$table->timestamps();
-});
-}
+    /**
+    * Run the migrations.
+    *
+    * @return void
+    */
+    public function up()
+    {
+        Schema::create('categories', function (Blueprint $table) {
+        $table->id('c_id');
+        $table->string('category_name')->unique();
+        $table->timestamps();
+      });
+    }
 
-/**
-* Reverse the migrations.
-*
-* @return void
-*/
-public function down()
-{
-Schema::dropIfExists('categories');
-}
+    /**
+    * Reverse the migrations.
+    *
+    * @return void
+    */
+    public function down()
+    {
+        Schema::dropIfExists('categories');
+    }
 };

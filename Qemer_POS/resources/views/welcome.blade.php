@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-@extends('Templates.cardTab')
+@extends('auth.login')
 @endsection

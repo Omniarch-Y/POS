@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BranchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,6 @@ Route::get('/home', [StockController::class, 'index'])->name('home')->middleware
 
 // Route for stock items
 Route::controller(StockController::class)->middleware('isAdmin')->group( function (){
-
     Route::get('singleItem/{id}','show');
     Route::post('storeItem','store');
     Route::get('edit/{id}','edit');
@@ -51,7 +51,6 @@ Route::controller(CartController::class)->group(function(){
 });
 
 Route::controller(ReceiptController::class)->group( function (){
-     
     Route::get('receiptList','index');
     Route::get('anyReceipt','sortReceipt');
     Route::get('receipt/{id}','show');
@@ -71,4 +70,9 @@ Route::controller(UserController::class)->group( function (){
     Route::post('updatePass','updatePassword')->name('updatePass')->middleware('auth');
     Route::post('registerUser','store')->name('registerUser');
     Route::get('call_registerUser','hiddenRegisterUser');
+});
+
+Route::controller(BranchController::class)->group( function (){
+    Route::get('call_branchForm','displayForm');
+    Route::post('addBranch','store');
 });
