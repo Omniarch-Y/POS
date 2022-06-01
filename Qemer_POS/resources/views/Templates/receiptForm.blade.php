@@ -23,8 +23,8 @@
 <div class="card container text">
 <strong>    
             @if ($message = Session::get('error'))
-            <div class="alert alert-danger">
-                <h1>{{ $message }}</h1>
+            <div class="alert alert-danger center_text">
+                <h4>{{ $message }}</h4>
             </div>
            @endif    
             </strong>

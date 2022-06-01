@@ -4,11 +4,11 @@
 
 <div class="container my-5"style="">
     <div class="row align-items-center ">
-        <div class="col-md-8 mx-auto ">
+        <div class="col-md-8 mx-auto">
             <strong>    
             @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <h4>{{ $message }}</h1>
+            <div class="alert alert-success center_text">
+                <h4>{{ $message }}</h4>
             </div>
            @endif
             </strong>

@@ -60,8 +60,6 @@ class ReceiptController extends Controller
         $vatIncluded=$vat+$cash;
         $rno=$id;
         //validation for payment goes here
-       
-            // $cashOut=$cash->sum();
     
             return view('Templates.receiptForm', [
                 'informations'=>$cartItems,
@@ -70,9 +68,6 @@ class ReceiptController extends Controller
                 'vat'=>$vat,
                 'Rno'=>$rno,
                 'date'=>$date
-               
-                
-            
             ]);
     }
 
@@ -94,8 +89,7 @@ class ReceiptController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function sortReceipt(Request $request)
-    {
-           
+    {     
         $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cartItems = Cart::where('status',1)->where('created_at',$request->date)->with('item')->orderBy('created_at','DESC')->paginate(5);
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
@@ -120,7 +114,7 @@ class ReceiptController extends Controller
                 'cartTotal'=>$cartTotal,
                 'totalItemPrice' => $cartValue,
                 'receiptNo' => $rno
-            ]);
+               ]);
             }
             return redirect()->back()->with('error','No item has been purchased in this date');  
         }  

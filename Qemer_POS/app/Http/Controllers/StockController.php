@@ -27,8 +27,8 @@ class stockController extends Controller
         $vatIncluded=$vat+$cash;
         $value= number_format( $vatIncluded, 2, '.', '');
         
-
         if (auth()->user()->role == 'casher'){
+
             return view('home', [
                 'stocks' => $stocks,
                 'categories' => $category,
@@ -39,14 +39,10 @@ class stockController extends Controller
         }
         else{
             return view('viewCollection', [
-                // 'stocks' => $stocks,
-                // 'categories' => $category,
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
-                // 'cartTotal'=>$cartTotal,
             ]);
         }
-        
     }
 
     /**
@@ -85,20 +81,20 @@ class stockController extends Controller
         if($itemExists){
            $newAmount= $itemExists->total_amount + $request->total_amount;
            Stock::where('name',$request->name)->where('category_id',$request->category)->update(['total_amount' => $newAmount]);
+
            return redirect()->back()->with('success','Item amount updated successfully');
         }
         else{
-               //creating a new item
-        $newItem= new Stock();
-        $newItem->name= $request->name;
-        $newItem->total_amount= $request->total_amount;
-        $newItem->price= $request->price;
-        $newItem->image= time().$imageName;
-        $newItem->category_id= $request->category;
-        $newItem->branch_id= auth()->user()->branch_id;
-        $newItem->save();
-        return redirect()->back()->with('success','Item added successfully');
-
+            //creating a new item
+            $newItem= new Stock();
+            $newItem->name= $request->name;
+            $newItem->total_amount= $request->total_amount;
+            $newItem->price= $request->price;
+            $newItem->image= time().$imageName;
+            $newItem->category_id= $request->category;
+            $newItem->branch_id= auth()->user()->branch_id;
+            $newItem->save();
+            return redirect()->back()->with('success','Item added successfully');
         }
     }
 
@@ -123,6 +119,7 @@ class stockController extends Controller
     {
         $stock = Stock::find($id);
         $categories = Category::inRandomOrder()->paginate(5);
+
         return view('Templates.editStock',compact('stock','categories'));
     }
 
@@ -156,7 +153,7 @@ class stockController extends Controller
             $stocks->price= $request->price;
             $stocks->save();
 
-        return redirect('/collection')->with('success','stock updated successfully');
+        return redirect('/collection')->with('success','Stock updated successfully');
   
     }
 
@@ -170,7 +167,8 @@ class stockController extends Controller
     {   
         $stocks = Stock::find($id);
         $stocks->delete();
-        return redirect()->back()->with('success','stock deleted');
+
+        return redirect()->back()->with('success','Stock deleted successfully');
     }
 
     public function sortItems($id){
@@ -193,8 +191,7 @@ class stockController extends Controller
                  'cartTotal'=>$cartTotal
             ]);
         }
-    
-        return redirect()->back()->with('error', 'Sorry there is no product added to this category yet');
+        return redirect()->back()->with('error', "Sorry there aren't any items added to this category yet");
     }
 
     public function display(){
@@ -208,22 +205,19 @@ class stockController extends Controller
             $vatIncluded=$vat+$cash;
             $value= number_format( $vatIncluded, 2, '.', '');
         
-            // $cashOut=$cash->sum();
-
             return view('viewCollection', [
                 'stocks' => $stocks,
                 'categories' => $category,
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
                 'cartTotal'=>$cartTotal,
-            ]);
+         ]);
     }
 
     public function editView()
     {
         $categories = Category::inRandomOrder()->paginate(5);
-        return view('Templates.editStock',['categories' => $categories]);
-        
-    }
 
+        return view('Templates.editStock',['categories' => $categories]);    
+    }
 }

@@ -10,7 +10,7 @@
       font-family: 'Helvetica Neue',Helvetica,Arial;
 
   }
-  h4{
+  .h4{
       margin-top: 20px;
   }
 
@@ -23,14 +23,14 @@
 <div class="card container text">
 <strong>    
             @if ($message = Session::get('error'))
-            <div class="alert alert-danger">
-                <h6>{{ $message }}</h6>
+            <div class="alert alert-danger center_text">
+                <h4>{{ $message }}</h4>
             </div>
            @endif    
             </strong>
   <form action="{{url('/changeStatus')}}" method="POST">
     @csrf
-  <h4 class="text-center">SHOP RECEIPT</h4>
+  <h4 class="text-center h4">SHOP RECEIPT</h4>
   <div class="text-center">SUPERMARKET QEMER</div>
   <div class="text-center">WEE WE BOUGHT</div>
   <div class="text-center">Tel :0987654321</div>
@@ -38,9 +38,7 @@
  <input type="text" name="FS" hidden value="{{$Rno}}"> 
         RECIPT:{{$Rno}}</div>
         <input type="text" name="tin_number" hidden value="{{$tin_number}}">
-  {{-- @foreach ($informations as $information)
-  <div class="text-center">DATE :{{$information->created_at->format('Y-m-d') }}</div>
-  @endforeach --}}
+
   <div class="text-center">DATE :{{now()->format('d-m-Y')}}</div>
   <div class="text-center mb-1">CASHER :{{auth()->user()->name}}</div>
   <div class="dot">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>

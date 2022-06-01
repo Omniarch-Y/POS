@@ -3,7 +3,9 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
        <div class="modal-content">
              <div class="modal-header">
-             <center><h2 class="modal-title text-dark text-center "style=" justify-content-center">{{ __(' Category management form') }}</h2></center>
+                  <center>
+                     <h2 class="modal-title text-dark text-center "style=" justify-content-center">{{ __(' Category management form') }}</h2>
+                  </center>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
           <div class="modal-body">

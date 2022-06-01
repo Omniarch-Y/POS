@@ -42,7 +42,7 @@
                                 <p style="color:rgb(0, 241, 32);" class="text-center display-6">{{ $totalItemPrice }}
                                 </p>
                             </strong>
-                            <p class=" text-dark   text-center display-6 ">Br</p>
+                            <p class=" text-dark text-center display-6 ">Br</p>
                         </div>
                     </div>
                     <div class="container">
@@ -56,12 +56,12 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <div class="container">
-                <div class="row align-items-center justify-content-center ">
-                    <button type="submit" class=" mx-auto btn btn-primary">Proceed</button>
-                </div>
-            </div>
+               </div>
+              <div class="container">
+                  <div class="row align-items-center justify-content-center ">
+                      <button type="submit" class=" mx-auto btn btn-primary">Proceed</button>
+                  </div>
+              </div>
             </form>
         </div>
     </div>

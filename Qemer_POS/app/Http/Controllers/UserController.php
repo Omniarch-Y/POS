@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     /**
      * Display a listing of the resource.
      *
@@ -74,7 +68,6 @@ class UserController extends Controller
             'subcity'=>'required',
             'city'=>'required',
             'country'=>'required',
-             
         ]);
 
         $savedAddress_1 = $request->subcity;
@@ -110,8 +103,8 @@ class UserController extends Controller
         $newUser->address_id = $findAddress->id;
         $newUser->branch_id = $request->branch_id;
         $newUser->save();
-        return redirect()->back()->with('success','User added successfully');
 
+        return redirect()->back()->with('success','User added successfully');
     }
 
     /**
@@ -135,6 +128,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $address = Address::find($user->address_id);
+
         return view('Templates.editUser',compact('user','address'));
     }
 
@@ -147,7 +141,7 @@ class UserController extends Controller
 
         if(strcmp($request->old_password, $request->password) == 0){
             // Current password and new password are the same
-            return redirect()->back()->with("error","New Password cannot be the same as the old password.");
+            return redirect()->back()->with("error","New Password cannot be the same as the old password");
         }
 
         $request->validate([
@@ -160,8 +154,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->back()->with("success","Password successfully changed!");    
-        
+        return redirect()->back()->with("success","Password successfully changed");    
     }
 
     /**
@@ -213,7 +206,8 @@ class UserController extends Controller
             $users->phone_number = $request->phone_number;
             $users->address_id = $findAddress->id;
             $users->save();
-            return redirect('/viewUsers')->with('success', 'users updated successfully');
+            
+            return redirect('/viewUsers')->with('success', 'Users updated successfully');
     }
 
     /**
@@ -242,8 +236,6 @@ class UserController extends Controller
             return redirect('/');  
         }else{
             return view('auth.register',['branches' => $branches]);
-        }
-        
-    }
-    
+        }      
+    }   
 }

@@ -25,8 +25,6 @@ class CartController extends Controller
         $rno=random_int(0,9999999999);
         $tno=$request->Tin_number;
         //validation for payment goes here
-       
-            // $cashOut=$cash->sum();
     
             return view('Templates.printForm', [
                 'informations'=>$cartItems,
@@ -35,9 +33,7 @@ class CartController extends Controller
                 'vat'=>$vat,
                 'Rno'=>$rno,
                 'tin_number'=>$tno
-                
-            
-            ]);
+        ]);
     }
 
     public function anyReport(Request $request){
@@ -63,7 +59,7 @@ class CartController extends Controller
                 'totalItemPrice' => $cartValue,
             ]);
         }  
-        return redirect()->back()->with('error','No item has been purchased in this date ');    
+        return redirect()->back()->with('error','No item has been purchased in this date');    
     }
 
     /**
@@ -112,7 +108,6 @@ class CartController extends Controller
         Stock::where(['id' => $request->stock_id])->update(['total_amount' => $newAmount]);
         return redirect()->back()->with('success','Cart added successfully');
         }
-
     }
      
     public function takeBack(Request $request,$id){
@@ -123,9 +118,8 @@ class CartController extends Controller
         $newAmount=$itemExists->total_amount+$amount;
         Stock::where(['id' => $cartItem->stock_id])->update(['total_amount' => $newAmount]);
         $cartItem->delete();
-        return redirect()->back();
-        
 
+        return redirect()->back();
     }
 
     /**
@@ -179,8 +173,6 @@ class CartController extends Controller
         $query1=Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->update(['rno' => $request->FS]);
         $query1=Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->update(['tno' => $request->tin_number]);
         $query2=Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->update(['status' => '1']);
-  
-        
 
         return redirect('/home');
     }
@@ -212,16 +204,11 @@ class CartController extends Controller
         $cartValue= number_format( $vatIncluded, 2, '.', '');
 
             return view('dailyReport',[
-                 
                 'soldItems'=>$soldItems,
                 'informations'=>$cartItems,
                 'cash' => $Total,
                 'cartTotal'=>$cartTotal,
-            //   'totalItemPrice' => $value,
-              'totalItemPrice' => $cartValue,
-                 
-                
-            ]);         
+                'totalItemPrice' => $cartValue,
+         ]);         
      }
-     
 }

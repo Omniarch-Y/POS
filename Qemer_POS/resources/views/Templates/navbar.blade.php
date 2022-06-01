@@ -36,7 +36,7 @@
                     @if (auth()->user()->role=='casher')
                     <li class="navbar-item position-relative mx-4" style="margin-top:8px;">
                         <a type="" data-bs-toggle="modal" data-bs-target="#cartDisplay"
-                            class="bi fs-5  bi-cart text-dark">
+                            class="bi fs-5 bi-cart text-dark">
                             <span
                                 class="position-absolute mx-2 text-small top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {{$cartTotal}}

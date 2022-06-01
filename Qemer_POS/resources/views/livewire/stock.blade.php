@@ -3,7 +3,7 @@
 <div class="container">
    <div class="container">
       <div class="row">
-         <div class="col-md-6">
+         <div class="col-sm-12 center_text">
          <strong>    
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">

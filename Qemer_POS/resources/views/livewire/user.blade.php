@@ -3,7 +3,7 @@
 <div class="container">
     <div class="container">
        <div class="row">
-          <div class="col-md-6">
+          <div class="col-sm-12 center_text">
           <strong>    
                  @if ($message = Session::get('success'))
                  <div class="alert alert-success">
@@ -19,29 +19,17 @@
                  </div>
                 @endif     
          </strong>
-     
+          </div>
+          <div class="col-sm-6">
         <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search" style="margin-top:2rem; margin-left:10rem;"/>
      </div>
-     <div class="col-md-6">
+     <div class="col-sm-6">
          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUser" style="margin-top:2rem; margin-left:10rem; margin-right:1rem;"><i class="bi bi-person-plus-fill fs-6" aria-hidden="true" ></i></button> 
      </div>
     </div>
     </div>
  
     @extends('Templates.Modals.registerUser')
- 
- {{-- <script>
-    var modelId = document.getElementById('modelId');
- 
-    modelId.addEventListener('show.bs.modal', function (event) {
-         // Button that triggered the modal
-         let button = event.relatedTarget;
-         // Extract info from data-bs-* attributes
-         let recipient = button.getAttribute('data-bs-whatever');
- 
-       // Use above variables to manipulate the DOM
-    });
- </script> --}}
  
      <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
    

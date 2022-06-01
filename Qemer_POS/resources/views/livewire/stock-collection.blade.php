@@ -3,7 +3,7 @@
 <div class="container">
    <div class="container">
       <div class="row">
-         <div class="col-md-6">
+         <div class="col-md-12 center_text">
          <strong>    
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -19,50 +19,20 @@
                 </div>
                @endif     
         </strong>
-    
-       <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search" style="margin-top:2rem; margin-left:10rem;"/>
-    </div>
+      </div>
+      <div class="col-md-6">
+         <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search" style="margin-top:2rem; margin-left:10rem;"/>
+      </div>   
+       
     <div class="col-md-6">
         <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addItem"  style="margin-top:2rem; margin-left:10rem; margin-right:1rem;">Add new Item</button>
         <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addCategorys"   style="margin-top:2rem;margin-left:0rem;">Add new Category</button>
-     
     </div>
    </div>
-  
    </div>
-   {{-- <center class="mt-2">
-      <div class="row mx-auto justify-content-center align-items-center">
-      <div class=" mx-0 px-0 row justify-content-center align-items-center">
-          <div class="col-md-4">
-            <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search"/>
-          </div>
-  
-      <div class="col-md-1">
-         <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItem" style="width:10rem">Add new Item</button>
-      </div>
-  
-      <div class="col-md-1">
-         <button class="btn btn-outline-primary solo" data-bs-toggle="modal" data-bs-target="#addCategorys" style="width:10rem;">Add new Category</button>
-      </div>
-      </div>
-      </div>
-  </center> --}}
+
     @extends('Templates.Modals.addNewItem')
     @extends('Templates.Modals.addCategories')
-
-
-{{-- <script>
-   var modelId = document.getElementById('modelId');
-
-   modelId.addEventListener('show.bs.modal', function (event) {
-        // Button that triggered the modal
-        let button = event.relatedTarget;
-        // Extract info from data-bs-* attributes
-        let recipient = button.getAttribute('data-bs-whatever');
-
-      // Use above variables to manipulate the DOM
-   });
-</script> --}}
 
     <center class="mt-2">
         <div class="row mx-auto justify-content-center align-items-center ">

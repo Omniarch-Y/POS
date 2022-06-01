@@ -19,11 +19,21 @@ class BranchController extends Controller
         //
     }
 
+    public function hiddenDisplayForm()
+    {
+        $branch = Branch::all();
+
+        if($branch->count()>0){
+            return redirect('/');
+        }
+        else{
+            return view('Templates.addBranch');
+        }
+    }
+
     public function displayForm()
     {
-
         return view('Templates.addBranch');
-        
     }
     /** 
      * Show the form for creating a new resource.

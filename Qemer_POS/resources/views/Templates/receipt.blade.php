@@ -4,8 +4,8 @@
     <center> 
        <div class="container my-5 col-md-8">
    @if ($message = Session::get('error'))
-            <div class="alert alert-danger">
-                <h6>{{ $message }}</h6>
+            <div class="alert alert-danger center_text">
+                <h4>{{ $message }}</h4>
             </div>
            @endif    
             </strong>

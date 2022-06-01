@@ -7,8 +7,8 @@
         <div class="col-md-8 mx-auto ">
             <strong>    
             @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <h1>{{ $message }}</h1>
+            <div class="alert alert-success center_text">
+                <h4>{{ $message }}</h4>
             </div>
            @endif
             </strong>
@@ -119,11 +119,9 @@
                                   <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>
                                   </span>
-                              @enderror
-                              
+                              @enderror              
                       </div>
-            
-                      <button class="w-100 btn btn-primary btn" type="submit">{{ __('Update') }}</button>
+                        <button class="w-100 btn btn-primary btn" type="submit">{{ __('Update') }}</button>
                       </div>
                     </form>
                 </div>

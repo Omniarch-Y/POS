@@ -73,6 +73,7 @@ Route::controller(UserController::class)->group( function (){
 });
 
 Route::controller(BranchController::class)->group( function (){
-    Route::get('call_branchForm','displayForm');
+    Route::get('call_branchForm','hiddenDisplayForm');
+    Route::get('newBranch','displayForm')->middleware('isAdmin');
     Route::post('addBranch','store');
 });

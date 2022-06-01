@@ -3,7 +3,9 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
        <div class="modal-content">
              <div class="modal-header justify-content-center">
- <center><h2 class="modal-title text-dark text-center "style=" justify-content-center">{{ __('User registration form') }}</h2></center>
+                <center>
+                    <h2 class="modal-title text-dark text-center "style=" justify-content-center">{{ __('User registration form') }}</h2>
+                </center>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
           <div class="modal-body">
@@ -131,15 +133,13 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
-                            
+                            @enderror        
                     </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary ">{{ __('Register') }}</button>
                     </div>
-
                 </form>
              </div>
           </div>
