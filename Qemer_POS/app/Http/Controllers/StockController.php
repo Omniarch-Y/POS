@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Category;
 use App\Models\Cart;
+use App\Models\User;
 
 class stockController extends Controller
 {
@@ -17,7 +18,7 @@ class stockController extends Controller
     
     public function index()
     {
-        $stocks = Stock::inRandomOrder()->paginate(6);
+        $stocks = Stock::where('branch_id',auth()->user()->branch_id)->paginate(6);
         $category = Category::inRandomOrder()->paginate(5);
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cartTotal=$myCart->count();
@@ -26,6 +27,8 @@ class stockController extends Controller
         $vat=$cash*0.15;
         $vatIncluded=$vat+$cash;
         $value= number_format( $vatIncluded, 2, '.', '');
+        //data to be displayed on the company chart.
+        $users=User::all()->where('branch_id',auth()->user()->branch_id)->count();
         
         if (auth()->user()->role == 'casher'){
 
@@ -41,6 +44,8 @@ class stockController extends Controller
             return view('viewCollection', [
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
+                'users'=>$users,
+                'stocks' => $stocks->count(),
             ]);
         }
     }
