@@ -3,7 +3,6 @@
 <style>
 
   .card{
-    padding-bottom:0px;
       width:20%;
       margin-top: 30px;
       background:#f0f0f0;
@@ -20,7 +19,7 @@
   }
 
 </style>
-<div class="card container text">
+<div class="card container">
 <strong>    
             @if ($message = Session::get('error'))
             <div class="alert alert-danger center_text">

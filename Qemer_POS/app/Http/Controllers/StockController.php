@@ -153,7 +153,7 @@ class stockController extends Controller
             $stocks->price= $request->price;
             $stocks->save();
 
-        return redirect('/collection')->with('success','Stock updated successfully');
+        return redirect('/collection')->with('success','Item updated successfully');
   
     }
 
@@ -168,7 +168,7 @@ class stockController extends Controller
         $stocks = Stock::find($id);
         $stocks->delete();
 
-        return redirect()->back()->with('success','Stock deleted successfully');
+        return redirect()->back()->with('success','Item deleted successfully');
     }
 
     public function sortItems($id){

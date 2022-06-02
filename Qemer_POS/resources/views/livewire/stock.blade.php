@@ -1,8 +1,7 @@
 
 {{-- start of item list container --}}
 <div class="container">
-   <div class="container">
-      <div class="row">
+      <div class="row container">
          <div class="col-sm-12 center_text">
          <strong>    
                 @if ($message = Session::get('success'))
@@ -21,11 +20,11 @@
         </strong>
     </div>
    </div>
-   </div> 
+
   <center>
    <div class="row mx-auto justify-content-center align-items-center ">
    <center> <div class="container col-md-6">
-       <input type="text"  class="form-control" placeholder="Search..." wire:model="search" style="margin-top:2rem;"/>
+       <input type="text" class="form-control" placeholder="Search..." wire:model="search" style="margin-top:2rem;"/>
     </div>
    </center>
     <div class="mx-0 px-0 row justify-content-center align-items-center">
@@ -48,7 +47,7 @@
    </center>
     <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
   
-            <table class="table table-responsive table-hover table-light my-5">
+            <table class="table table-responsive table-hover table-light my-4">
                <thead>
                   <tr>
                      <th scope="col">

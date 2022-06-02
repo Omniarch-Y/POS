@@ -2,7 +2,7 @@
     <div class="home_content" style="float:right; padding-right:-100rem !important;">
       <div class="container">
     <center> 
-       <div class="container my-5 col-md-8">
+       <div class="my-5 col-md-6">
    @if ($message = Session::get('error'))
             <div class="alert alert-danger center_text">
                 <h4>{{ $message }}</h4>
@@ -13,16 +13,16 @@
        <strong>    
          
           {{-- start of search-bar --}}
-      <div class="container col-md-6 " style="margin-top:2rem">
-         <form action= "{{ url('anyReport')}}"  method="GET" class="d-flex">
+      <div class="container col-md-6">
+         <form action= "{{ url('anyReport')}}" method="GET" class="d-flex">
             @csrf
             
             <input class="form-control me-2 fs-5" name="date" type="date">
-            <button class="btn bi bi-search fs-5 text-white" type="submit" style="background-color:rgb(0, 84, 137) "></button>
+            <button class="btn bi bi-search text-white" type="submit" style="background-color:rgb(0, 84, 137);"></button>
           </form>
      </div>
      {{-- end of search-bar --}}
-    <table class="table table-responsive table-hover" style="margin-top:4rem">
+    <table class="table table-responsive table-hover" style="margin-top:4rem;">
                   <thead class="thead-inverse|thead-default">
                      <tr>
                         <th>Item Name</th>
@@ -49,7 +49,7 @@
                     
                   </tbody>
                </table>
-               <div class="container " style="margin-top:5rem">
+               <div class="container" style="margin-top:5rem">
                   <div class="d-flex justify-content-center align-items-center ">
                       <h4 >{{ $soldItems->links() }}</h4>
               </div>
