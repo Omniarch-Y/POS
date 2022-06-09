@@ -33,21 +33,10 @@
                     </li>
                     @endif
                     @else
-                    @if (auth()->user()->role=='casher')
-                    <li class="navbar-item position-relative mx-4" style="margin-top:8px;">
-                        <a type="" data-bs-toggle="modal" data-bs-target="#cartDisplay"
-                            class="bi fs-5 bi-cart text-dark">
-                            <span
-                                class="position-absolute mx-2 text-small top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                {{$cartTotal}}
 
-                            </span>
-                        </a>
+                    <li class="nav-item me-5 mt-1">
+                        <a class="" data-bs-toggle="modal" data-bs-target="#addUser" ><i class="bi bi-person-plus-fill fs-4" aria-hidden="true" ></i></a> 
                     </li>
-
-                    @extends('Templates.Modals.cartDisplay')
-                    
-                    @endif
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

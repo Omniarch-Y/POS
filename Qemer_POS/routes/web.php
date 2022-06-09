@@ -69,6 +69,7 @@ Route::controller(UserController::class)->group( function (){
     Route::delete('deleteUser/{id}','destroy')->middleware('isAdmin');
     Route::post('updatePass','updatePassword')->name('updatePass')->middleware('auth');
     Route::post('registerUser','store')->name('registerUser');
+    Route::get('registeru','view')->name('registeru')->middleware('isAdmin');
     Route::get('call_registerUser','hiddenRegisterUser');
 });
 

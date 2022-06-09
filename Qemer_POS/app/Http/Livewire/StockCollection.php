@@ -31,17 +31,10 @@ class StockCollection extends Component
                                 ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
                                 ->orWhere('categories.category_name', 'like', $search)           
                                 ->paginate(5);
-        $categories = categories::all();
 
         if ($stockCollection !== null) return view('livewire.stock-collection',[
             'stockCollection' => $stockCollection,
-            'categories' => $categories
             ] );
         else return redirect()->back()->with('error', 'no search result');
-    }
-
-    public function updatingSearchInput()
-    {
-        $this->gotoPage(1);
     }
 }

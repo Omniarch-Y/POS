@@ -61,13 +61,21 @@
                 </a>
                 <span class="tooltip">Users</span>
             </li>
+
+            <li>
+                <a href="/newBranch">
+                    <i class="bi bi-arrow-down fs-5" aria-hidden="true" ></i>
+                    <span class="links_name">Add branch</span>
+                </a>
+                <span class="tooltip">Add branch</span>
+            </li>
         @endif
     </ul>
 
     <div class="profile_content">
         <div class="profile">
             <div class="profile_details">
-                <img src="" alt="">
+                <img src="{{ asset('storage/userImages/'.auth()->user()->avatar) }}" alt="">
                 <div class="name_job">
                     <div class="name">{{auth()->user()->name}}</div>
                     <div class="job">being cool</div>

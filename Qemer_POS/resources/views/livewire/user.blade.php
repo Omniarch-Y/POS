@@ -20,16 +20,15 @@
                 @endif     
          </strong>
           </div>
-          <div class="col-sm-6">
-        <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search" style="margin-top:2rem; margin-left:10rem;"/>
+          <center>
+          <div class="col-sm-6 justify-content-center mt-5">
+        <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search"/>
      </div>
-     <div class="col-sm-6">
-         <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUser" style="margin-top:2rem; margin-left:10rem; margin-right:1rem;"><i class="bi bi-person-plus-fill fs-6" aria-hidden="true" ></i></button> 
-     </div>
+   </center>
     </div>
     </div>
  
-    @extends('Templates.Modals.registerUser')
+    {{-- @extends('Templates.Modals.registerUser') --}}
  
      <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
    

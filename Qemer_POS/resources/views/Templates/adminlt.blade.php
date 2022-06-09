@@ -26,6 +26,8 @@
 
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 </head>
+@extends('layouts.app')
+@section('content')
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
@@ -1459,7 +1461,8 @@ All rights reserved.
 
 <script src="dist/js/pages/dashboard.js"></script>
 </body>
-</html>
+@endsection
+{{-- </html> --}}
 
 
 
