@@ -19,8 +19,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $stocks = Stock::inRandomOrder()->paginate(6);
+    {       $branches = Branch::all();
             $category = Category::inRandomOrder()->paginate(5);
             $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
             $cartTotal=$myCart->count();
@@ -31,7 +30,7 @@ class UserController extends Controller
             $value= number_format( $vatIncluded, 2, '.', '');
 
             return view('users', [
-                'stocks' => $stocks,
+                'branches' => $branches,
                 'categories' => $category,
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
@@ -57,6 +56,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'name' =>['required', 'string', 'max:255'],
             'email'=>['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -64,7 +64,7 @@ class UserController extends Controller
             'phone_number'=>['required', 'max:14'],
             'avatar'=>'required|mimes:jpg,png,jpeg,svg,gif',
             'role'=>'required',
-            'branch_id' =>'required',
+            'branch' =>'required',
             'subcity'=>'required',
             'city'=>'required',
             'country'=>'required',
@@ -101,7 +101,7 @@ class UserController extends Controller
         $newUser->role = $request->role;
         $newUser->avatar = time().$avatarName;
         $newUser->address_id = $findAddress->id;
-        $newUser->branch_id = $request->branch_id;
+        $newUser->branch_id = $request->branch;
         $newUser->save();
 
         return redirect()->back()->with('success','User added successfully');
@@ -207,7 +207,7 @@ class UserController extends Controller
             $users->address_id = $findAddress->id;
             $users->save();
             
-            return redirect('/viewUsers')->with('success', 'Users updated successfully');
+            return redirect('/viewUsers')->with('success', 'User updated successfully');
     }
 
     /**
@@ -237,5 +237,10 @@ class UserController extends Controller
         }else{
             return view('auth.register',['branches' => $branches]);
         }      
-    }   
+    }
+
+    public function view(){
+        $branches = Branch::all();
+        return view('Modals.registerUser',['branches' => $branches]);
+    }
 }

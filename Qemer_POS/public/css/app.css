@@ -13101,3 +13101,110 @@ textarea.form-control-lg {
     width: auto;
   }
 }
+
+.card > .overlay,
+.card > .loading-img,
+.overlay-wrapper > .overlay,
+.overlay-wrapper > .loading-img,
+.info-box > .overlay,
+.info-box > .loading-img,
+.small-box > .overlay,
+.small-box > .loading-img {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.card .overlay,
+.overlay-wrapper .overlay,
+.info-box .overlay,
+.small-box .overlay {
+  border-radius: 0.25rem;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.card .overlay > .fa,
+.card .overlay > .fas,
+.card .overlay > .far,
+.card .overlay > .fab,
+.card .overlay > .fal,
+.card .overlay > .fad,
+.card .overlay > .svg-inline--fa,
+.card .overlay > .ion,
+.overlay-wrapper .overlay > .fa,
+.overlay-wrapper .overlay > .fas,
+.overlay-wrapper .overlay > .far,
+.overlay-wrapper .overlay > .fab,
+.overlay-wrapper .overlay > .fal,
+.overlay-wrapper .overlay > .fad,
+.overlay-wrapper .overlay > .svg-inline--fa,
+.overlay-wrapper .overlay > .ion,
+.info-box .overlay > .fa,
+.info-box .overlay > .fas,
+.info-box .overlay > .far,
+.info-box .overlay > .fab,
+.info-box .overlay > .fal,
+.info-box .overlay > .fad,
+.info-box .overlay > .svg-inline--fa,
+.info-box .overlay > .ion,
+.small-box .overlay > .fa,
+.small-box .overlay > .fas,
+.small-box .overlay > .far,
+.small-box .overlay > .fab,
+.small-box .overlay > .fal,
+.small-box .overlay > .fad,
+.small-box .overlay > .svg-inline--fa,
+.small-box .overlay > .ion {
+  color: #343a40;
+}
+
+.card .overlay.dark,
+.overlay-wrapper .overlay.dark,
+.info-box .overlay.dark,
+.small-box .overlay.dark {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card .overlay.dark > .fa,
+.card .overlay.dark > .fas,
+.card .overlay.dark > .far,
+.card .overlay.dark > .fab,
+.card .overlay.dark > .fal,
+.card .overlay.dark > .fad,
+.card .overlay.dark > .svg-inline--fa,
+.card .overlay.dark > .ion,
+.overlay-wrapper .overlay.dark > .fa,
+.overlay-wrapper .overlay.dark > .fas,
+.overlay-wrapper .overlay.dark > .far,
+.overlay-wrapper .overlay.dark > .fab,
+.overlay-wrapper .overlay.dark > .fal,
+.overlay-wrapper .overlay.dark > .fad,
+.overlay-wrapper .overlay.dark > .svg-inline--fa,
+.overlay-wrapper .overlay.dark > .ion,
+.info-box .overlay.dark > .fa,
+.info-box .overlay.dark > .fas,
+.info-box .overlay.dark > .far,
+.info-box .overlay.dark > .fab,
+.info-box .overlay.dark > .fal,
+.info-box .overlay.dark > .fad,
+.info-box .overlay.dark > .svg-inline--fa,
+.info-box .overlay.dark > .ion,
+.small-box .overlay.dark > .fa,
+.small-box .overlay.dark > .fas,
+.small-box .overlay.dark > .far,
+.small-box .overlay.dark > .fab,
+.small-box .overlay.dark > .fal,
+.small-box .overlay.dark > .fad,
+.small-box .overlay.dark > .svg-inline--fa,
+.small-box .overlay.dark > .ion {
+  color: #ced4da;
+}

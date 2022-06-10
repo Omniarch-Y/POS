@@ -7,6 +7,7 @@ use App\Models\Stock;
 use App\Models\Category;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Branch;
 
 class stockController extends Controller
 {
@@ -17,24 +18,24 @@ class stockController extends Controller
      */
     
     public function index()
-    {
+    {   
+        $branches = Branch::all();
+        $categories = Category::all();
         $stocks = Stock::where('branch_id',auth()->user()->branch_id)->paginate(6);
-        $category = Category::inRandomOrder()->paginate(5);
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
-        $cartTotal=$myCart->count();
+        $cartTotal = $myCart->count();
         $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
-        $cash= Cart::where('status',0)->where('casher_id',auth()->user()->id)->sum('total_price');
-        $vat=$cash*0.15;
-        $vatIncluded=$vat+$cash;
-        $value= number_format( $vatIncluded, 2, '.', '');
+        $cash = Cart::where('status',0)->where('casher_id',auth()->user()->id)->sum('total_price');
+        $vat = $cash*0.15;
+        $vatIncluded = $vat+$cash;
+        $value = number_format( $vatIncluded, 2, '.', '');
         //data to be displayed on the company chart.
-        $users=User::all()->where('branch_id',auth()->user()->branch_id)->count();
+        $users = User::all()->where('branch_id',auth()->user()->branch_id)->count();
         
         if (auth()->user()->role == 'casher'){
 
             return view('home', [
                 'stocks' => $stocks,
-                'categories' => $category,
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
                 'cartTotal'=>$cartTotal,
@@ -42,9 +43,11 @@ class stockController extends Controller
         }
         else{
             return view('viewCollection', [
-                'informations'=>$cartItems,
+                'branches' => $branches,
+                'categories' => $categories,
+                'informations' => $cartItems,
                 'totalItemPrice' => $value,
-                'users'=>$users,
+                'users' => $users,
                 'stocks' => $stocks->count(),
             ]);
         }
@@ -72,8 +75,9 @@ class stockController extends Controller
             'name' =>'required',
             'total_amount'=>'required',
             'price'=>'required',
+            'category'=>'required',
+            'branch'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg,svg,gif',
-             
         ]);
 
         //image storing logic
@@ -96,6 +100,7 @@ class stockController extends Controller
             $newItem->total_amount= $request->total_amount;
             $newItem->price= $request->price;
             $newItem->image= time().$imageName;
+            $newItem->branch_id= $request->branch;
             $newItem->category_id= $request->category;
             $newItem->branch_id= auth()->user()->branch_id;
             $newItem->save();

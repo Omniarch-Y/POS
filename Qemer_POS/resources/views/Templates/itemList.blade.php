@@ -2,5 +2,5 @@
 <div class="home_content style">
 
   <livewire:stock />
-  
+
 </div>

@@ -40,7 +40,7 @@
                          </div>
    
                          <div class="form-group row py-3">    
-                         <label for="total_amount" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+                         <label for="catagories" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
                                  <div class="col-md-6  ">
                                       <select class="form-control" id="role" name="category" required focus>
                                           @foreach ($categories as $category)       
@@ -50,6 +50,18 @@
                                       </select>
                                  </div>
                         </div>
+
+                        <div class="form-group row py-3">    
+                            <label for="Branch" class="col-md-4 col-form-label text-md-right">{{ __('Branch') }}</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" id="branch" name="branch" required focus>
+                                            @foreach($branches as $branch)
+                                            <option value="{{$branch->id}}" selected>{{$branch->branch_name}}</option>
+                                            @endforeach
+                                            <option value="Select Role" disabled selected>Click to Select Branch</option>       
+                                        </select>
+                                    </div>
+                           </div>
  
                          <div class="form-group row py-3">
                              <label for="image"  class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>

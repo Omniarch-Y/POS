@@ -25,6 +25,7 @@
       </div>   
        
     <div class="col-md-6">
+<<<<<<< HEAD
         <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addItem"  style="margin-top:2rem; margin-left:10rem; margin-right:1rem;">Add new Item</button>
         <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addCategorys"   style="margin-top:2rem;margin-left:0rem;">Add new Category</button>
 <!-- 
@@ -39,12 +40,13 @@
                                       </select>
                                  </div>
                         </div> -->
+=======
+        <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addItem" style="margin-top:2rem; margin-left:10rem; margin-right:1rem;">Add new Item</button>
+        <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addCategorys" style="margin-top:2rem;margin-left:0rem;">Add new Category</button>
+>>>>>>> 3f4b68360850d6772467fd4e0772dab79413881d
     </div>
    </div>
    </div>
-
-    @extends('Templates.Modals.addNewItem')
-    @extends('Templates.Modals.addCategories')
 
     <center class="mt-2">
         <div class="row mx-auto justify-content-center align-items-center ">

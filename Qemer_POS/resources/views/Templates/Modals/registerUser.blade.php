@@ -29,6 +29,19 @@
                     </div>
 
                     <div class="col-sm-6">
+                        <label for="Email" class="form-label">{{ __('Email') }}</label>
+    
+                                <input id="email" placeholder="{{ __('Enter new email') }}" type="email" class="form-control @error('email') is-invalid @enderror" name="email" autocomplete="email" required>
+    
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+    
+                        </div>
+
+                    {{-- <div class="col-sm-6">
                         <label for="Role" class="form-label">{{ __('Role') }}</label>
 
                         <select class="form-control" id="role" name="role" required focus>
@@ -37,22 +50,36 @@
                             <option value="casher" selected>Casher</option>      
                             <option value="Select Role" disabled selected>Click to Select Role</option>       
                         </select>
+                    </div> --}}
+
+                    <input id="role" type="text" name="role" class="form-control" value="casher" required hidden>
+
+
+                    <div class="col-sm-6">
+                        <label for="Branch" class="form-label lable_color">{{ __('Branch') }}</label>
+
+                        <select class="form-control" id="branch" name="branch" required focus>
+                            @foreach($branches as $branch)
+                            <option value="{{$branch->id}}" selected>{{$branch->branch_name}}</option>
+                            @endforeach
+                            <option value="Select Role" disabled selected>Click to Select Branch</option>       
+                        </select>
                     </div>
 
-                    <div class="col-12">
-                    <label for="Email" class="form-label">{{ __('Email') }}</label>
+                    <div class="col-sm-6">
+                        <label for="Phone number" class="form-label">{{ __('Phone number') }}</label>
+    
+                                <input id="phone_number" type="number" class="form-control @error('price') is-invalid @enderror" name="phone_number" autocomplete="phone_number" placeholder="{{ __('Enter the new phone number') }}" required>
+    
+                                @error('Phone number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                
+                        </div>
 
-                            <input id="email" placeholder="{{ __('Enter new email') }}" type="email" class="form-control @error('email') is-invalid @enderror" name="email" autocomplete="email" required>
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-
-                    </div>
-
-                    <div class="col-12">
+                    <div class="col-sm-12">
                     <label for="avatar" class="form-label">{{ __('Avatar') }}</label>
                     <input name="avatar" type="file" class="form-control">
                             @error('avatar')
@@ -60,19 +87,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                    </div>
-
-                    <div class="col-12">
-                    <label for="Phone number" class="form-label">{{ __('Phone number') }}</label>
-
-                            <input id="phone_number" type="number" class="form-control @error('price') is-invalid @enderror" name="phone_number" autocomplete="phone_number" placeholder="{{ __('Enter the new phone number') }}" required>
-
-                            @error('Phone number')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            
                     </div>
 
                     <div class="col-sm-6">
@@ -98,7 +112,7 @@
                                 name="password_confirmation"placeholder="{{ __('Confirm password')}}" required autocomplete="new-password">
                     </div>         
 
-                    <div class="col-4">
+                    <div class="col-sm-4">
                         <label for="subcity" class="form-label">{{ __('Subcity') }}</label>
 
                             <input id="subcity" type="text" class="form-control @error('subcity') is-invalid @enderror" name="subcity" placeholder="{{ __('Enter the subcity')}}" required autocomplete="name" autofocus required>
@@ -111,7 +125,7 @@
                         
                     </div>
         
-                    <div class="col-4">
+                    <div class="col-sm-4">
                         <label for="city" class="form-label">{{ __('City') }}</label>
 
                             <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" autocomplete="city" placeholder="{{ __('Enter the city name') }}" required>
@@ -124,7 +138,7 @@
                             
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-sm-4">
                         <label for="country" class="form-label">{{ __('Country') }}</label>
 
                             <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" autocomplete="country" placeholder="{{ __('Enter the country name') }}" required>

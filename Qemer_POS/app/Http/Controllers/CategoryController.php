@@ -54,13 +54,6 @@ class CategoryController extends Controller
             }
     }
 
-    public function displayForm(){
-        $categories= Category::all();
-        return view('Templates.createItems',[
-            'categories' => $categories
-        ]);
-    }
-
     /**
      * Display the specified resource.
      *
