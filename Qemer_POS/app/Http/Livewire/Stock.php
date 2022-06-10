@@ -49,16 +49,19 @@ class Stock extends Component
     public function render()
 
     {
+        $stocks2 = Stocks::where('branch_id',auth()->user()->branch_id)->paginate(6);
 
         $search = '%'.$this->search.'%';
         
-        $stocks = Stocks::where('stocks.name' ,'like' ,$search)
+        $stocks = Stocks::where('branch_id',auth()->user()->branch_id)->where('stocks.name' ,'like' ,$search)
+                                ->orWhere('categories.category_name', 'like', $search)->where('branch_id',auth()->user()->branch_id)
                                 ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
-                                ->orWhere('categories.category_name', 'like', $search)
+                               
                                 // ->orderBy($this->sortColumnName, $this->sortDirection)           
                                 ->paginate(5);
+                               
 
-        if ($stocks !== null) return view('livewire.stock',['stocks' => $stocks] );
+        if ($stocks !== null) return view('livewire.stock',['stocks' => $stocks,'stocks2'=>$stocks2] );
         else return redirect()->back()->with('error', 'no search result');
 
     }

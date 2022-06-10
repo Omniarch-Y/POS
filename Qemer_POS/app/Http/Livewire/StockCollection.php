@@ -29,7 +29,7 @@ class StockCollection extends Component
 
         $stockCollection = Stocks::where('stocks.name','like', $search)->where('stocks.branch_id', auth()->user()->branch_id)
                                 ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
-                                ->orWhere('categories.category_name', 'like', $search)           
+                                ->orWhere('categories.category_name', 'like', $search)->where('stocks.branch_id', auth()->user()->branch_id)       
                                 ->paginate(5);
         $categories = categories::all();
 

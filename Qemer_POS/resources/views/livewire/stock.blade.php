@@ -67,7 +67,9 @@
                   </tr>
                </thead>
                <tbody>
-
+                 
+                     
+                 
                      @foreach($stocks as $stock)
                      <tr>
                      <form action="{{ url('storeCart') }}" method="POST">
@@ -108,7 +110,9 @@
                 
                     </form>
                     </tr>
+                    
                     @endforeach
+                  
 
 
                </tbody>
