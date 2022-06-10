@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Receipt;
 use App\Models\Stock;
 use DateTime;
+use App\Models\Branch;
 
 class CartController extends Controller
 {
@@ -42,6 +43,7 @@ class CartController extends Controller
         $soldItems = Cart::where('status',1)->where('created_at',$request->date)->with('item')->orderBy('created_at','DESC')->paginate(5);
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cartTotal=$myCart->count();
+        $branch = Branch::all();
          /* For navbar */
         $cartCash= Cart::where('status',0)->where('casher_id',auth()->user()->id)->sum('total_price');
         $vat=$cartCash*0.15;
@@ -57,6 +59,7 @@ class CartController extends Controller
                 'cash' => $Total,
                 'cartTotal'=>$cartTotal,
                 'totalItemPrice' => $cartValue,
+                'branches'=>$branch
             ]);
         }  
         return redirect()->back()->with('error','No item has been purchased in this date');    
@@ -195,6 +198,7 @@ class CartController extends Controller
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cartTotal=$myCart->count();
         $value= number_format($cash);
+        $branch = Branch::all();
         
         $Total= number_format($cash);
         
@@ -204,6 +208,7 @@ class CartController extends Controller
         $cartValue= number_format( $vatIncluded, 2, '.', '');
 
             return view('dailyReport',[
+                'branches' => $branch,
                 'soldItems'=>$soldItems,
                 'informations'=>$cartItems,
                 'cash' => $Total,

@@ -69,6 +69,14 @@
                 </a>
                 <span class="tooltip">Add branch</span>
             </li>
+            <li>
+                <a href="" data-bs-toggle="modal" data-bs-target="#changeBranch">
+                    <i class="bi bi-diagram-3-fill fs-5" aria-hidden="true"></i>
+                    <span class="links_name">Change branch</span>
+                </a>
+                <span class="tooltip">Change branch</span>
+            </li>
+            @extends('Templates.Modals.changeBranch')
         @endif
     </ul>
 

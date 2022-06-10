@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Receipt;
 use Illuminate\Http\Request;
+use App\Models\Branch;
 
 class ReceiptController extends Controller
 {
@@ -18,6 +19,7 @@ class ReceiptController extends Controller
      }
     public function index()
     {
+        $branch = Branch::all();
         $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cash= Cart::where('status',1)->where('created_at',now()->format('Y-m-d'))->sum('total_price');
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
@@ -39,7 +41,8 @@ class ReceiptController extends Controller
                 'cash' => $Total,
                 'cartTotal'=>$cartTotal,
                 'totalItemPrice' => $cartValue,
-                'receiptNo' => $rno
+                'receiptNo' => $rno,
+                'branches'=>$branch
                 
             ]);
     }

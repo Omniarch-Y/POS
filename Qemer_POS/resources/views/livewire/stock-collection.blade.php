@@ -25,25 +25,8 @@
       </div>   
        
     <div class="col-md-6">
-<<<<<<< HEAD
-        <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addItem"  style="margin-top:2rem; margin-left:10rem; margin-right:1rem;">Add new Item</button>
-        <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addCategorys"   style="margin-top:2rem;margin-left:0rem;">Add new Category</button>
-<!-- 
-        <div class="form-group row py-3">    
-                         <label for="total_amount" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
-                                 <div class="col-md-6  ">
-                                      <select class="form-control" id="role" name="category" required focus>
-                                          @foreach ($categories as $category)       
-                                          <option value="{{ $category->c_id }}" selected>{{ $category->category_name }}</option>        
-                                          @endforeach
-                                          <option value="Select Role"  disabled selected>Click to Select Category</option>       
-                                      </select>
-                                 </div>
-                        </div> -->
-=======
         <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addItem" style="margin-top:2rem; margin-left:10rem; margin-right:1rem;">Add new Item</button>
         <button class="btn btn-outline-primary " data-bs-toggle="modal" data-bs-target="#addCategorys" style="margin-top:2rem;margin-left:0rem;">Add new Category</button>
->>>>>>> 3f4b68360850d6772467fd4e0772dab79413881d
     </div>
    </div>
    </div>

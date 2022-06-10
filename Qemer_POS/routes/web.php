@@ -77,4 +77,5 @@ Route::controller(BranchController::class)->group( function (){
     Route::get('call_branchForm','hiddenDisplayForm');
     Route::get('newBranch','displayForm')->middleware('isAdmin');
     Route::post('addBranch','store');
+    Route::post('changeBranch','changeBranch');
 });

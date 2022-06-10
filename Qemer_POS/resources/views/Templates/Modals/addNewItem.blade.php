@@ -26,7 +26,7 @@
                          </div>
  
                          <div class="form-group row py-3">
-                             <label for="total_amount" class="col-md-4 col-form-label text-md-right">{{ __('Total amount in stock') }}</label>
+                             <label for="total_amount" class="col-md-4 col-form-label text-md-right">{{ __('Total ass amount in stock') }}</label>
  
                              <div class="col-md-6">
                                  <input id="total_amount"  placeholder="{{ __('Enter how many numbers in stock it will have') }}" type="number" class="form-control @error('total_amount') is-invalid @enderror" name="total_amount" value="{{ old('total_amount') }}" autocomplete="total_amount" required>

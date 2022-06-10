@@ -1,4 +1,7 @@
 <div class="home_content" style="float:right;">
+<span class="fs-2 px-4 py-3 ">Current branch:
+<span class="breadcrumb-item active fs-3 text-success" aria-current="page"> {{ $branch->branch_name }} </span>
+</span>
 
     <div class="row justify-content-evenly align-items-center ">
         <div class="col-md-3">

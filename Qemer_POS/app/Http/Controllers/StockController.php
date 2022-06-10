@@ -20,6 +20,7 @@ class stockController extends Controller
     public function index()
     {   
         $branches = Branch::all();
+        $branch=Branch::where('id',auth()->user()->branch_id)->first();
         $categories = Category::all();
         $stocks = Stock::where('branch_id',auth()->user()->branch_id)->paginate(6);
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
@@ -35,10 +36,12 @@ class stockController extends Controller
         if (auth()->user()->role == 'casher'){
 
             return view('home', [
+                'branches' => $branches,
                 'stocks' => $stocks,
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
                 'cartTotal'=>$cartTotal,
+                'branch'=>$branch,
             ]);
         }
         else{
@@ -49,6 +52,7 @@ class stockController extends Controller
                 'totalItemPrice' => $value,
                 'users' => $users,
                 'stocks' => $stocks->count(),
+                'branch'=>$branch,
             ]);
         }
     }
@@ -128,6 +132,7 @@ class stockController extends Controller
     public function edit($id)
     {
         $stock = Stock::find($id);
+        
         $categories = Category::inRandomOrder()->paginate(5);
 
         return view('Templates.editStock',compact('stock','categories'));
@@ -143,6 +148,7 @@ class stockController extends Controller
     public function update(Request $request, $id)
     {
         $stocks = Stock::find($id);
+        
 
         if($request->category_id == null){
             $stocks->category_id = $stocks->category_id;
@@ -183,6 +189,7 @@ class stockController extends Controller
 
     public function sortItems($id){
         $existingItems = Category::find($id);
+        $branches = Branch::all();
         $sortedItem= Stock::where('category_id',$existingItems->id)->paginate(5);
         $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cash= Cart::where('status',0)->where('casher_id',auth()->user()->id)->sum('total_price');
@@ -194,6 +201,7 @@ class stockController extends Controller
         
         if($sortedItem->count()>0){
             return view('home',[
+                'branches' =>$branches,
                 'stocks'=>$sortedItem,
                 'categories' => $sortedItem,
                 'informations'=>$cartItems,
@@ -205,6 +213,8 @@ class stockController extends Controller
     }
 
     public function display(){
+            $branches = Branch::all();
+            $branch=Branch::where('id',auth()->user()->branch_id)->first();
             $stocks = Stock::inRandomOrder()->paginate(6);
             $category = Category::inRandomOrder()->paginate(5);
             $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
@@ -214,6 +224,7 @@ class stockController extends Controller
             $vat=$cash*0.15;
             $vatIncluded=$vat+$cash;
             $value= number_format( $vatIncluded, 2, '.', '');
+            $users = User::all()->where('branch_id',auth()->user()->branch_id)->count();
         
             return view('viewCollection', [
                 'stocks' => $stocks,
@@ -221,6 +232,10 @@ class stockController extends Controller
                 'informations'=>$cartItems,
                 'totalItemPrice' => $value,
                 'cartTotal'=>$cartTotal,
+                'branches' => $branches,
+                'users' => $users,
+                'stocks' => $stocks->count(),
+                'branch'=>$branch,
          ]);
     }
 

@@ -93,9 +93,10 @@ class BranchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function changeBranch(Request $request)
     {
-        //
+        $currentBranch=  User::where('role',auth()->user()->role=='admin')->where('branch_id',auth()->user()->branch_id)->update(['branch_id' => $request->branch]);
+        return redirect()->back();
     }
 
     /**
