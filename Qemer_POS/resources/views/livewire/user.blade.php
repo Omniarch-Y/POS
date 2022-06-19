@@ -3,7 +3,8 @@
 <div class="container">
     <div class="container">
        <div class="row">
-          <div class="col-sm-12 center_text">
+         <center>
+          <div class="col-md-6 center_text">
           <strong>    
                  @if ($message = Session::get('success'))
                  <div class="alert alert-success">
@@ -20,6 +21,7 @@
                 @endif     
          </strong>
           </div>
+         </center>
           <center>
           <div class="col-sm-6 justify-content-center mt-5">
         <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search"/>
@@ -70,7 +72,7 @@
              </table>
           </div>
  
-   <div class="container" style="margin-top:5rem">
+   <div class="container" style="margin-top:3rem">
       <div class="d-flex justify-content-center align-items-center ">
           <h5>{{ $users->links() }}</h5>
       </div>

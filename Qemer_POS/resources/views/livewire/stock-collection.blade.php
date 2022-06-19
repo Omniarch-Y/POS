@@ -3,23 +3,25 @@
 <div class="container">
    <div class="container">
       <div class="row">
-         <div class="col-md-12 center_text">
-         <strong>    
-                @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <h4>{{ $message }}</h4>
-                </div>
-               @endif     
-        </strong>
+         <center>
+            <div class="col-md-6 center_text">
+            <strong>    
+                  @if ($message = Session::get('success'))
+                  <div class="alert alert-success">
+                     <h4>{{ $message }}</h4>
+                  </div>
+                  @endif     
+         </strong>
 
-        <strong>    
-                @if ($message = Session::get('error'))
-                <div class="alert alert-danger">
-                    <h4>{{ $message }}</h4>
-                </div>
-               @endif     
-        </strong>
-      </div>
+         <strong>    
+                  @if ($message = Session::get('error'))
+                  <div class="alert alert-danger">
+                     <h4>{{ $message }}</h4>
+                  </div>
+                  @endif     
+         </strong>
+         </div>
+      </center>
       <div class="col-md-6">
          <input type="text" class="form-control" id="search_all" placeholder="Search..." wire:model="search" style="margin-top:2rem; margin-left:10rem;"/>
       </div>   
@@ -51,7 +53,7 @@
         </div>
         </div>
     </center>
-    
+    {{-- <input type="text" class="form-control me-4" id="search_all" placeholder="Search..." wire:model="search" style="float:right; max-width:250px;"/> --}}
     <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
   
             <table class="table table-responsive table-hover my-5">
@@ -61,6 +63,7 @@
                      <th scope="col">Price</th>
                      <th scope="col">Stock amount</th>
                      <th scope="col">Catagory</th>
+                     <td></td>
 
                   </tr>
                </thead>

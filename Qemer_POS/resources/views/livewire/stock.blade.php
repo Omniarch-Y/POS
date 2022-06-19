@@ -2,23 +2,25 @@
 {{-- start of item list container --}}
 <div class="container">
       <div class="row container">
-         <div class="col-sm-12 center_text">
-         <strong>    
-                @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <h4>{{ $message }}</h4>
-                </div>
-               @endif     
-        </strong>
+         <center>
+            <div class="col-md-6 center_text">
+            <strong>    
+                  @if ($message = Session::get('success'))
+                  <div class="alert alert-success">
+                     <h4>{{ $message }}</h4>
+                  </div>
+                  @endif     
+         </strong>
 
-        <strong>    
-                @if ($message = Session::get('error'))
-                <div class="alert alert-danger">
-                    <h4>{{ $message }}</h4>
-                </div>
-               @endif     
-        </strong>
-    </div>
+         <strong>    
+                  @if ($message = Session::get('error'))
+                  <div class="alert alert-danger">
+                     <h4>{{ $message }}</h4>
+                  </div>
+                  @endif     
+         </strong>
+      </div>
+   </center>
    </div>
 
   <center>
@@ -68,8 +70,6 @@
                </thead>
                <tbody>
                  
-                     
-                 
                      @foreach($stocks as $stock)
                      <tr>
                      <form action="{{ url('storeCart') }}" method="POST">
@@ -93,13 +93,13 @@
 
                         <div>
                            <a class="btn dec" type="submit" ><i class="bi fs-5 bi-dash-circle-fill"></i></a>
-                           <input type="number" class="text-center" id="amountX" name="amount" value='0' readonly/>
+                           <input type="number" class="text-center" id="amountX" name="amount" value='0'/>
                            <a class="btn inc" type="submit" ><i class="bi fs-5 bi-plus-circle-fill"></i></a>
                         </div>
 
                         <input type="hidden" id ="price" name="price" value='{{$stock->price}}'>
-                        
                         <input type="hidden" id ="stock_id" name="stock_id" value='{{$stock->id}}'>
+
                     </td>
                     <td>
                        <button type="submit" class="btn btn-primary mx-auto my-1"><i class="bi bi-cart-plus-fill fs-5" aria-hidden="true" ></i></button>
@@ -112,8 +112,6 @@
                     </tr>
                     
                     @endforeach
-                  
-
 
                </tbody>
             </table>

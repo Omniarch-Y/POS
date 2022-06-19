@@ -92,9 +92,10 @@ class ReceiptController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function sortReceipt(Request $request)
-    {     
-        $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
-        $cartItems = Cart::where('status',1)->where('created_at',$request->date)->with('item')->orderBy('created_at','DESC')->paginate(5);
+    {   
+        $branch = Branch::all();
+        // $cartItems = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
+        $cartItems = Cart::where('status',1)->where('created_at',$request->date)->with('item')->orderBy('created_at','DESC')->get();
         $myCart = Cart::where('status',0)->where('casher_id',auth()->user()->id)->with('item')->get();
         $cartTotal=$myCart->count();
 
@@ -109,19 +110,21 @@ class ReceiptController extends Controller
             $cash= Cart::where('status',1)->where('created_at',$request->date)->sum('total_price');
             $value= number_format($cash);
             $Total= number_format($cash);
-            $rno=Receipt::where('created_at',$request->date)->orderBy('created_at','DESC')->paginate(20);
+            $rno=Receipt::where('created_at',$request->date)->orderBy('created_at','DESC')->paginate(1);
             if($rno){
             return view('receiptList',[
+
                 'informations'=>$cartItems,
                 'cash' => $Total,
                 'cartTotal'=>$cartTotal,
                 'totalItemPrice' => $cartValue,
-                'receiptNo' => $rno
+                'receiptNo' => $rno,
+                'branches'=>$branch
                ]);
             }
-            return redirect()->back()->with('error','No item has been purchased in this date');  
-        }  
-        return redirect()->back()->with('error','No item has been purchased in this date');    
+            else {return redirect()->back()->with('error','No item has been purchased in this date'); } 
+        }
+        else{ return redirect()->back()->with('error','No item has been purchased in this date');    }
     }
 
     /**

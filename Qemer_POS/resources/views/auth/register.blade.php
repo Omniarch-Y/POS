@@ -103,7 +103,7 @@
                             <div class="col-sm-12">
                                 <label for="Branch" class="form-label lable_color">{{ __('Branch') }}</label>
 
-                                <select class="form-control" id="branch_id" name="branch_id" required focus>
+                                <select class="form-control" id="branch" name="branch" required focus>
                                     @foreach($branches as $branch)
                                     <option value="{{$branch->id}}" selected>{{$branch->branch_name}}</option>
                                     @endforeach

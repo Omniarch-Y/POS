@@ -83,10 +83,10 @@
     <div class="profile_content">
         <div class="profile">
             <div class="profile_details">
-                <img src="{{ asset('storage/userImages/'.auth()->user()->avatar) }}" alt="">
+                <img src="{{ asset('storage/userImages/'.auth()->user()->avatar) }}" alt="user image">
                 <div class="name_job">
                     <div class="name">{{auth()->user()->name}}</div>
-                    <div class="job">being cool</div>
+                    <div class="job">@if(auth()->user()->role == 'admin')Admin @else Casher @endif</div>
                 </div>
             </div>
             <form action="{{route('logout')}}" method="post">

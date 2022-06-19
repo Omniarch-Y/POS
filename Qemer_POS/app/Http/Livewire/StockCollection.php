@@ -34,7 +34,7 @@ class StockCollection extends Component
                                 ->paginate(5);
 
         if ($stockCollection !== null) return view('livewire.stock-collection',[
-            'stockCollection' => $stockCollection,
+            'stockCollection' => $stockCollection
             ] );
         else return redirect()->back()->with('error', 'no search result');
     }

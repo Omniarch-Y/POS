@@ -56,11 +56,8 @@ class Stock extends Component
         $stocks = Stocks::where('branch_id',auth()->user()->branch_id)->where('stocks.name' ,'like' ,$search)
                                 ->orWhere('categories.category_name', 'like', $search)->where('branch_id',auth()->user()->branch_id)
                                 ->join('categories', 'stocks.category_id', '=', 'categories.c_id')
-                               
                                 // ->orderBy($this->sortColumnName, $this->sortDirection)           
                                 ->paginate(5);
-                               
-
         if ($stocks !== null) return view('livewire.stock',['stocks' => $stocks,'stocks2'=>$stocks2] );
         else return redirect()->back()->with('error', 'no search result');
 

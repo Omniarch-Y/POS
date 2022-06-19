@@ -132,10 +132,11 @@ class stockController extends Controller
     public function edit($id)
     {
         $stock = Stock::find($id);
-        
-        $categories = Category::inRandomOrder()->paginate(5);
+        $currentCategory = Category::all()->where('c_id', $stock->category_id);
 
-        return view('Templates.editStock',compact('stock','categories'));
+        $categories = Category::all();
+
+        return view('Templates.editStock',compact('stock','categories','currentCategory'));
     }
 
     /**

@@ -27,7 +27,7 @@
                         <div class="col-sm-6">
                           <label for="name" class="form-label">{{ __('Name') }}</label>
 
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="{{ __('Enter the user name')}}" value={{$user->name}} required autocomplete="name" autofocus required>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="{{ __('Enter the user name')}}" value="{{$user->name}}" required autocomplete="name" autofocus required>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -38,20 +38,25 @@
                         </div>
             
                         <div class="col-sm-6">
-                            <label for="Role" class="form-label">{{ __('Role') }}</label>
+                            <label for="Branch" class="form-label lable_color">{{ __('Branch') }}</label>
+    
+                            <select class="form-control" id="branch" name="branch" required focus>
+                                @foreach($branches as $branch)
+                                <option value="{{$branch->id}}" selected>{{$branch->branch_name}}</option>
+                                @endforeach
 
-                              <select class="form-control" id="role" name="role" required focus>
+                                <option value="Select Role" disabled selected></option>
 
-                                <option value="admin" selected>Admin</option>
-                                <option value="casher" selected>Casher</option>      
-                                <option value="Select Role" disabled selected>Click to Select Role</option>       
-                             </select>
+                                @foreach($currentBranch as $C_branch)
+                                <option value="{{$C_branch->id}}" selected>{{$C_branch->branch_name}}</option>
+                                @endforeach
+                            </select>
                         </div>
             
                         <div class="col-12">
                           <label for="Email" class="form-label">{{ __('Email') }}</label>
 
-                                <input id="email" placeholder="{{ __('Enter new email') }}" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value={{$user->email }} autocomplete="email" required>
+                                <input id="email" placeholder="{{ __('Enter new email') }}" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email }}" autocomplete="email" required>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -74,7 +79,7 @@
                         <div class="col-12">
                           <label for="Phone number" class="form-label">{{ __('Phone number') }}</label>
 
-                                <input id="phone_number" type="number" class="form-control @error('price') is-invalid @enderror" name="phone_number" autocomplete="phone_number" placeholder="{{ __('Enter the new phone number') }}" value={{$user->phone_number}} required>
+                                <input id="phone_number" type="number" class="form-control @error('price') is-invalid @enderror" name="phone_number" autocomplete="phone_number" placeholder="{{ __('Enter the new phone number') }}" value="{{$user->phone_number}}" required>
 
                                 @error('Phone number')
                                     <span class="invalid-feedback" role="alert">
@@ -87,7 +92,7 @@
                         <div class="col-4">
                           <label for="subcity" class="form-label">{{ __('Subcity') }}</label>
   
-                              <input id="subcity" type="text" class="form-control @error('subcity') is-invalid @enderror" name="subcity" placeholder="{{ __('Enter the subcity')}}" required autocomplete="name" autofocus value={{$address->subcity}} required>
+                              <input id="subcity" type="text" class="form-control @error('subcity') is-invalid @enderror" name="subcity" placeholder="{{ __('Enter the subcity')}}" required autocomplete="name" autofocus value="{{$address->subcity}}" required>
   
                               @error('subcity')
                                   <span class="invalid-feedback" role="alert">
@@ -100,7 +105,7 @@
                       <div class="col-4">
                           <label for="city" class="form-label">{{ __('City') }}</label>
   
-                              <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" autocomplete="city" placeholder="{{ __('Enter the city name') }}" value={{$address->city}} required>
+                              <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" autocomplete="city" placeholder="{{ __('Enter the city name') }}" value="{{$address->city}}" required>
   
                               @error('city')
                                   <span class="invalid-feedback" role="alert">
@@ -113,7 +118,7 @@
                       <div class="col-4">
                           <label for="country" class="form-label">{{ __('Country') }}</label>
   
-                              <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" autocomplete="country" placeholder="{{ __('Enter the country name') }}" value={{$address->country}} required>
+                              <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" autocomplete="country" placeholder="{{ __('Enter the country name') }}" value="{{$address->country}}" required>
   
                               @error('country')
                                   <span class="invalid-feedback" role="alert">

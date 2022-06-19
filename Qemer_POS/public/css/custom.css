@@ -704,3 +704,73 @@ body {
       }
   
   } */
+    .form-control{
+        border-radius: 10rem;
+        /* font-size: 0.86rem; */
+
+    }
+    .btn{
+        border-radius: 10rem;
+        /* font-size: 0.86rem; */
+        
+    }
+    .form-control:focus{
+        box-shadow: none;
+        border-color: #0566bd;
+    }
+
+  .form-field{
+        position: relative;
+        margin: 32px 0;
+    }
+    .input-text{
+        display: block;
+        width: 100%;
+        height: 32px;
+        border-width: 0 0 2px 0;
+        border-color: #5543ca;
+        /* font-size: 18px; */
+        line-height:26px;
+        /* font-weight: 400; */
+    }
+
+    .input-text:focus + .label,
+    .input-text:not(:focus):valid + .label{
+        transform: translateY(-24px);
+    }
+    
+    .input-text:focus{
+        outline: none;
+    }
+
+    .label{
+        position: absolute;
+        left: 20px;
+        bottom: 11px;
+        /* font-size: 18px; */
+        line-height: 26px;
+        font-weight: 400;
+        color: #5543ca;
+        cursor: text;
+        text-transform: capitalize;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .contact-form .submit-btn{
+        display: inline-block;
+        background-image: linear-gradient(125deg, #a72897, #064497);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 16px;
+        border: none;
+        width: 200px;
+        cursor: pointer;
+    }
+
+    .btn-no-radius{
+        border-radius:0;
+    }
+    
+
+    

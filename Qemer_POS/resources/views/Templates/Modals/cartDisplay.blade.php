@@ -1,7 +1,7 @@
 <!-- //modal for cartDisplay -->
 
 <div class="modal fade" id="cartDisplay" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="text-center modal-title">Cart</h5>

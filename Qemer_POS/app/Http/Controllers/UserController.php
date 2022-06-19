@@ -127,9 +127,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $branches = Branch::all();
         $address = Address::find($user->address_id);
+        $currentBranch = Branch::all()->where('id', $user->branch_id);
 
-        return view('Templates.editUser',compact('user','address'));
+        return view('Templates.editUser',compact('user','address','branches','currentBranch'));
     }
 
     public function updatePassword(Request $request)
@@ -196,6 +198,7 @@ class UserController extends Controller
                 $newAddress->subcity = $request->subcity;
                 $newAddress->city = $request->city;
                 $newAddress->country = $request->country;
+                $users->branch_id = $request->branch;
                 $newAddress->save();
             }
             
@@ -205,6 +208,7 @@ class UserController extends Controller
             $users->email= $request->email;
             $users->phone_number = $request->phone_number;
             $users->address_id = $findAddress->id;
+            $users->branch_id = $request->branch;
             $users->save();
             
             return redirect('/viewUsers')->with('success', 'User updated successfully');

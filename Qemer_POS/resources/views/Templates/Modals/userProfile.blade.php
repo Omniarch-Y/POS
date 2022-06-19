@@ -22,7 +22,6 @@
                         </thead>
                         <tbody>
                             <tr>
-
                                 <td scope="row">{{ auth()->user()->id }}</td>
                                 <td>{{ auth()->user()->name }}</td>
                                 <td>{{ auth()->user()->email }}</td>
@@ -34,7 +33,7 @@
             </div>
             <div class="">
                 <div class="row align-items-center justify-content-center mb-0">
-                    <button class="btn btn-danger" data-bs-target="#changePassword" data-bs-toggle="modal" data-bs-dismiss="modal">Change Password</button>
+                    <button class="btn btn-danger btn-no-radius" data-bs-target="#changePassword" data-bs-toggle="modal" data-bs-dismiss="modal">Change Password</button>
                 </div>
             </div>
             </div>
