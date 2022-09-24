@@ -29,6 +29,42 @@
                     </div>
 
                     <div class="col-sm-6">
+                                <label for="sex" class="form-lable">{{ __('Sex') }}</label>
+                                <div class="row ms-1">
+
+                                    <div class="form-check col-sm-6">
+                                        <input class="form-check-input" type="radio" name="sex" id="sex"
+                                            value="{{ 'Female' }}" required>
+                                        <label class="form-check-label" for="sex">Female</label>
+                                    </div>
+
+                                    <div class="form-check col-sm-6">
+                                        <input class="form-check-input" type="radio" name="sex" id="sex"
+                                            value="{{ 'Male' }}" required>
+                                        <label class="form-check-label" for="sex">Male</label>
+                                    </div>
+                                </div>
+                                @error('sex')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                        <div class="col-sm-6">
+                          <label for="dob" class="form-label">{{ __('Date of birth') }}</label>
+
+                                <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" placeholder="{{ __('Enter the user dob')}}" required autocomplete="dob" autofocus required>
+
+                                @error('dob')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                        </div>
+
+                    <div class="col-sm-6">
                         <label for="Email" class="form-label">{{ __('Email') }}</label>
     
                                 <input id="email" placeholder="{{ __('Enter new email') }}" type="email" class="form-control @error('email') is-invalid @enderror" name="email" autocomplete="email" required>

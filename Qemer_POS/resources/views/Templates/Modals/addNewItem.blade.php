@@ -1,6 +1,6 @@
 <!-- Start of Modal for adding new Item -->
 <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
        <div class="modal-content">
              <div class="modal-header justify-content-center">
                 <center>

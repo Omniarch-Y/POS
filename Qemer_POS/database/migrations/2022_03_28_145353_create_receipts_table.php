@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('receipt_number')->unique();
             $table->bigInteger('tin_number')->unique()->nullable();
             $table->timestamps();
-            
         });
     }
 

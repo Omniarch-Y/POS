@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Branch;
 use App\Models\Address;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BranchController extends Controller
 {

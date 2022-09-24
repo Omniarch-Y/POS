@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Branch;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class stockController extends Controller
 {
@@ -108,7 +109,13 @@ class stockController extends Controller
             $newItem->category_id= $request->category;
             $newItem->branch_id= auth()->user()->branch_id;
             $newItem->save();
-            return redirect()->back()->with('success','Item added successfully');
+            
+            // $this->dispatchBrowserEvent('respond', [
+            //     'title' => 'stock',
+            //     'icon' => 'success',
+            //     // 'iconColor' => 'green'
+            // ]);
+            return redirect('/collection')->with('success','Item added successfully');
         }
     }
 

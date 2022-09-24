@@ -10,6 +10,7 @@ use App\Models\Cart;
 use App\Models\Branch;
 use App\Models\Address;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -59,6 +60,8 @@ class UserController extends Controller
         
         $request->validate([
             'name' =>['required', 'string', 'max:255'],
+            'sex'=>['required', 'string', 'max:10'],
+            'dob'=>['required', 'date'],
             'email'=>['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone_number'=>['required', 'max:14'],
@@ -95,6 +98,8 @@ class UserController extends Controller
         //creating a new user
         $newUser= new User();
         $newUser->name = $request->name;
+        $newUser->sex = $request->sex;
+        $newUser->dob = $request->dob;
         $newUser->email = $request->email;
         $newUser->password = Hash::make($request->password);
         $newUser->phone_number = $request->phone_number;
@@ -205,6 +210,8 @@ class UserController extends Controller
             $findAddress = Address::where('subcity',$savedAddress_1)->where('city',$savedAddress_2)->where('country',$savedAddress_3)->first();
 
             $users->name= $request->name;
+            $users->sex = $request->sex;
+            $users->dob = $request->dob;
             $users->email= $request->email;
             $users->phone_number = $request->phone_number;
             $users->address_id = $findAddress->id;

@@ -34,9 +34,10 @@
  
      <div class="row justify-content-md-evenly justify-content-lg-center align-items-center container">
    
-             <table class="table table-responsive table-hover my-5">
-                <thead>
+             <table class="table table-hover mt-5">
+                <thead class="thead-inverse|thead-default">
                    <tr>
+                      <th></th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
                       <th scope="col">Phone number</th>
@@ -48,6 +49,7 @@
  
                       @foreach($users as $user)
                       <tr>
+                      <td scope="row"><img class="mb-6 ms-5" src="{{ asset('storage/userImages/'.$user->avatar) }}" alt="user image" style="max-width:3rem;min-height:3rem"></td>
                       <td>{{$user->name}}</td>
                       <td>{{$user->email}}</td>
                       <td>{{$user->phone_number}}</td>

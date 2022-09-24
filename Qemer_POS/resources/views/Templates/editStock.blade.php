@@ -87,8 +87,14 @@
                             @enderror
                             
                     </div>
+
+                    <center>
+                               
+                        <img class="mb-6 ms-5" src="{{ asset('storage/itemImages/'.$stock->image) }}" alt="item image" style="max-width:10rem;min-height:5rem; float:right">
+                            
+                    </center>
         
-                    <button class="w-100 btn btn-primary btn" type="submit">{{ __('Update') }}</button>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">{{ __('Update') }}</button>
                 </form>
             </div>
         </div>

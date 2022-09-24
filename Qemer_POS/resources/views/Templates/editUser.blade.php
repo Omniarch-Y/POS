@@ -13,6 +13,13 @@
            @endif
             </strong>
 
+
+
+            <!-- <div style="float:right; margin-top:8.5rem; margin-left:rem;">
+                <img src="{{asset('storage/userImages/'.$user->avatar)}}" style="  max-width:7rem; min-height:7rem" alt="">
+               
+            </div> -->
+
             <div class="py-5 text-center">
               <i class="bi bi-pencil-square fs-1 icon-green" aria-hidden="true"></i>
             </div>
@@ -30,6 +37,42 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="{{ __('Enter the user name')}}" value="{{$user->name}}" required autocomplete="name" autofocus required>
 
                                 @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                        </div>
+
+                        <div class="col-sm-4">
+                                <label for="sex" class="form-lable">{{ __('Sex') }}</label>
+                                <div class="row ms-1">
+
+                                    <div class="form-check col-sm-6">
+                                        <input class="form-check-input" type="radio" name="sex" id="sex"
+                                            value="{{ 'Female' }}" required>
+                                        <label class="form-check-label" for="sex">Female</label>
+                                    </div>
+
+                                    <div class="form-check col-sm-6">
+                                        <input class="form-check-input" type="radio" name="sex" id="sex"
+                                            value="{{ 'Male' }}" required>
+                                        <label class="form-check-label" for="sex">Male</label>
+                                    </div>
+                                </div>
+                                @error('sex')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                        <div class="col-sm-6">
+                          <label for="dob" class="form-label">{{ __('Date of birth') }}</label>
+
+                                <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" placeholder="{{ __('Enter the user dob')}}" value="{{$user->dob}}" required autocomplete="dob" autofocus required>
+
+                                @error('dob')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

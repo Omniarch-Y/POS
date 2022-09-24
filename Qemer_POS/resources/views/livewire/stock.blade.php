@@ -52,6 +52,7 @@
             <table class="table table-responsive table-hover table-light my-4">
                <thead>
                   <tr>
+                     <th></th>
                      <th scope="col">
                         Name
                         {{-- <span wire:click="sortBy('name') class="float-right text-sm" style="cursor: pointer;">
@@ -60,7 +61,7 @@
                         </span> --}}
                      </th>
                      <th scope="col">Price</th>
-                     <th scope="col">Stock amount</th>
+                     <th scope="col">Stock Amount</th>
                      @if (auth()->user()->role == 'casher')
                      <th scope="col">Amount</th>
                      <th scope="col">Add to cart</th>
@@ -74,6 +75,7 @@
                      <tr>
                      <form action="{{ url('storeCart') }}" method="POST">
                         @csrf
+                     <td scope="row"><img src="{{ asset('storage/itemImages/'.$stock->image) }}" alt="item image" style="max-width:5rem;min-height:3rem;"></td>
                      <td>{{$stock->name}}</td>
                      <td>{{$stock->price}}Br</td>
                      @if ($stock->total_amount>10)

@@ -7,7 +7,3 @@
 
 @endsection
 @extends('layouts.app')
-
-
-
-

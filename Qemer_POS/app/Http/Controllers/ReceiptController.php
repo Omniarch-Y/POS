@@ -5,6 +5,7 @@ use App\Models\Cart;
 use App\Models\Receipt;
 use Illuminate\Http\Request;
 use App\Models\Branch;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ReceiptController extends Controller
 {

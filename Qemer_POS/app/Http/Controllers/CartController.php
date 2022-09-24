@@ -8,6 +8,7 @@ use App\Models\Receipt;
 use App\Models\Stock;
 use DateTime;
 use App\Models\Branch;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
